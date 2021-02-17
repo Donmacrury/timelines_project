@@ -5,14 +5,15 @@
 
 ** MVP
 1.    Users should be able to view historical data, ordered chronologically.
-2.    To add/delete/update historical events.
+2.    Add Events to map
 3.    Select events, persons and dates to access further details.
 4.    Filter events.
 
 ** Extensions
 1.    Use React or JS library to create an interactive timeline.
-2.    Use properties to create data visualisations, e.g. date vs. location
-3.    Consume API in Backend
+2.    To add/delete/update historical events.
+3.    Use properties to create data visualisations, e.g. date vs. location
+4.    Consume API in Backend
 
 ** Example Structure:
 Include Event and Person classes.
