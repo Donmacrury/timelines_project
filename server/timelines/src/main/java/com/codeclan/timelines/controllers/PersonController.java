@@ -1,5 +1,6 @@
 package com.codeclan.timelines.controllers;
 
+import com.codeclan.timelines.models.Event;
 import com.codeclan.timelines.models.Person;
 import com.codeclan.timelines.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +20,8 @@ public class PersonController {
     @GetMapping("/persons")
     public ResponseEntity<List<Person>> getAllPersons(
             @RequestParam(name="person_name", required = false) String personName,
-            @RequestParam(name="location_name", required = false) String locationName,
-            @RequestParam(name="latitude", required = false) Double latitude,
-            @RequestParam(name="longitude", required = false) Double longitude
+            @RequestParam(name="location_name", required = false) String locationName
     ){
-//        if(latitude != null && longitude != null){
-//         return new ResponseEntity<>(personRepository.findByEventsLocationLatitudeAndLongitude(latitude, longitude), HttpStatus.OK);
-//        }
         if(personName != null){
             return new ResponseEntity<>(personRepository.findByName(personName), HttpStatus.OK);
         }
@@ -43,8 +39,19 @@ public class PersonController {
 
 
     @PostMapping("/persons")
-    public ResponseEntity<Person> createPerson(@RequestBody Person person){
-        personRepository.save(person);
+    public ResponseEntity<Person> createPerson(@RequestBody Person person){ personRepository.save(person);
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
+
+
+    @PutMapping("/persons/{id}")
+    public ResponseEntity updatePersons(@RequestBody Person person){
+        return new ResponseEntity(personRepository.save(person), HttpStatus.OK);
+    }
+
+    @DeleteMapping("/persons/{id}")
+    public void deletePerson(@PathVariable Long id){
+        personRepository.deleteById(id);
+    }
+
 }
