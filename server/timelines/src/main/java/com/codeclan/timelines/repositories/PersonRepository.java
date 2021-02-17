@@ -8,9 +8,9 @@ import java.util.List;
 
 @Repository
 public interface PersonRepository extends JpaRepository<Person, Long> {
-//    List<Person> findByName(String name);
-//    List<Person> findByEventsLocationName(String name);
-//    List<Person> findByEventsLocationLatitude(double latitude);
-//    List<Person> findByEventsLocationLongitude(double longitude);
+    List<Person> findByName(String name);
+    List<Person> findByEventsLocationName(String name);
+    List<Person> findByEventsLocationLatitude(double latitude);
+    List<Person> findByEventsLocationLongitude(double longitude);
 
 }

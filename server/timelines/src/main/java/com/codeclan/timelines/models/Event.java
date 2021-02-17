@@ -39,6 +39,10 @@ public class Event {
     public Event() {
     }
 
+    public void addPerson(Person person){
+        this.peopleAt.add(person);
+    }
+
     public Long getId() {
         return id;
     }
