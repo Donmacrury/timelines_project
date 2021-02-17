@@ -13,15 +13,18 @@ public class Location {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
     @Column
-    private double coordinates;
+    private double latitude;
+    @Column
+    private double longitude;
     @Column
     private String description;
     @OneToMany(mappedBy = "location")
     @JsonIgnoreProperties({"location"})
     private List<Event> events;
 
-    public Location(double coordinates, String description) {
-        this.coordinates = coordinates;
+    public Location(double latitude, double longitude, String description) {
+        this.latitude = latitude;
+        this.longitude = longitude;
         this.description = description;
         this.events = new ArrayList<>();
     }
@@ -37,12 +40,20 @@ public class Location {
         this.id = id;
     }
 
-    public double getCoordinates() {
-        return coordinates;
+    public double getLatitude() {
+        return latitude;
     }
 
-    public void setCoordinates(double coordinates) {
-        this.coordinates = coordinates;
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 
     public String getDescription() {
