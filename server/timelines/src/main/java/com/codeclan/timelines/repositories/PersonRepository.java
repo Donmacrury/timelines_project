@@ -10,7 +10,7 @@ import java.util.List;
 public interface PersonRepository extends JpaRepository<Person, Long> {
     List<Person> findByName(String name);
     List<Person> findByEventsLocationName(String name);
-    List<Person> findByEventsLocationLatitude(double latitude);
-    List<Person> findByEventsLocationLongitude(double longitude);
+//    List<Person> findByEventsLocationsLatitudeAndLongitude(double latitude, double longitude);
+//    List<Person> findByEventsLocationLongitude(double longitude);
 
 }

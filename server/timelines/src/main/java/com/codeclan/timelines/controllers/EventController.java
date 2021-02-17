@@ -22,4 +22,9 @@ public class EventController {
         }
         return new ResponseEntity(eventRepository.findAll(), HttpStatus.OK);
     }
+
+    @GetMapping("/events/{id}")
+    public ResponseEntity getEventById(@RequestParam(name="id") Long id){
+        return new ResponseEntity(eventRepository.findById(id), HttpStatus.OK);
+    }
 }

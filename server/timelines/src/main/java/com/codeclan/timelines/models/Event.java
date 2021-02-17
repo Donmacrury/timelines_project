@@ -1,6 +1,7 @@
 package com.codeclan.timelines.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -24,23 +25,36 @@ public class Event {
     @Column
     private String description;
     @ManyToMany
-    @JoinColumn(name="person_id")
-    @JsonIgnoreProperties({"event"})
-    private List<Person> peopleAt;
+    @JsonIgnoreProperties({"events"})
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @JoinTable(
+            name="persons_events",
+            joinColumns = {@JoinColumn(
+                    name = "event_id",
+                    nullable = false,
+                    updatable = false
+            )},
+            inverseJoinColumns = {@JoinColumn(
+                    name = "person_id",
+                    nullable = false,
+                    updatable = false
+            )}
+    )
+    private List<Person> persons;
 
     public Event(String name, String date, Location location, String description) {
         this.name = name;
         this.date = date;
         this.location = location;
         this.description = description;
-        this.peopleAt = new ArrayList<>();
+        this.persons = new ArrayList<>();
     }
 
     public Event() {
     }
 
     public void addPerson(Person person){
-        this.peopleAt.add(person);
+        this.persons.add(person);
     }
 
     public Long getId() {
@@ -84,10 +98,10 @@ public class Event {
     }
 
     public List<Person> getPeopleAt() {
-        return peopleAt;
+        return persons;
     }
 
     public void setPeopleAt(List<Person> peopleAt) {
-        this.peopleAt = peopleAt;
+        this.persons = peopleAt;
     }
 }
