@@ -6,7 +6,6 @@ import com.codeclan.timelines.models.Person;
 import com.codeclan.timelines.repositories.EventRepository;
 import com.codeclan.timelines.repositories.LocationRepository;
 import com.codeclan.timelines.repositories.PersonRepository;
-import org.junit.Before;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -40,20 +39,34 @@ class TimelinesApplicationTests {
 	}
 
 	@Test
-	public void canGetEventByPersonName(){
-	List<Person> personsEvent = personRepository.findByEventsLocationName("Council at Derby");
-	assertEquals("Council at Derby", personsEvent.get(0).getEvents());
+	void canGetEventByEventName() {
+		List<Event> eventByName = eventRepository.findByName("Battle of Culloden");
+		assertEquals(1, eventByName.size());
 	}
 
 	@Test
-	void canGetPersonByEventName() {
-	List<Event> eventPersons = eventRepository.findByPersonName("Charles Edward Stuart");
-	assertEquals("")
-
+	void canGetEventByLocationName(){
+		List<Event> eventByLocationName = eventRepository.findByLocationName("Culloden Moor");
+		assertEquals(1, eventByLocationName.size());
+		assertEquals("Battle of Culloden", eventByLocationName.get(0).getName());
+	}
 
 	@Test
-	void canGetLocationWithEvent() {
-		List<Event> eventLocation = eventRepository.findByLocationName("Culloden Moor");
-		assertEquals("Culloden Moor", eventLocation.get(0).getLocation().getName());
+	public void canGetEventByPersonId(){
+		List<Event> personsEvent = eventRepository.findByPersonsId((long) 2);
+		assertEquals("Battle of Culloden", personsEvent.get(0).getName());
 	}
-	}
+
+//	@Test
+//	void canGetPersonByEventName() {
+//		List<Event> eventsWithPerson = eventRepository.findByPersonsName("Charles Edward Stuart");
+//		assertEquals("Charles Edwards Stuart", eventsWithPerson.get(0).getPeopleAt());
+//	}
+//
+//
+//	@Test
+//	void canGetLocationWithEvent() {
+//		List<Event> eventLocation = eventRepository.findByLocationName("Culloden Moor");
+//		assertEquals("Culloden Moor", eventLocation.get(0).getLocation().getName());
+//	}
+}

@@ -5,7 +5,6 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -40,21 +39,21 @@ public class Event {
                     updatable = false
             )}
     )
-    private List<Person> peopleAt;
+    private List<Person> person;
 
     public Event(String name, String date, Location location, String description) {
         this.name = name;
         this.date = date;
         this.location = location;
         this.description = description;
-        this.peopleAt = new ArrayList<>();
+        this.person = new ArrayList<>();
     }
 
     public Event() {
     }
 
     public void addPerson(Person person){
-        this.peopleAt.add(person);
+        this.person.add(person);
     }
 
     public Long getId() {
@@ -97,11 +96,11 @@ public class Event {
         this.description = description;
     }
 
-    public List<Person> getPeopleAt() {
-        return peopleAt;
+    public List<Person> getPersons() {
+        return person;
     }
 
-    public void setPeopleAt(List<Person> peopleAt) {
-        this.peopleAt = peopleAt;
+    public void setPersons(List<Person> persons) {
+        this.person = persons;
     }
 }
