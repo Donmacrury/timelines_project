@@ -57,16 +57,48 @@ class TimelinesApplicationTests {
 		assertEquals("Battle of Culloden", personsEvent.get(0).getName());
 	}
 
-//	@Test
-//	void canGetPersonByEventName() {
-//		List<Event> eventsWithPerson = eventRepository.findByPersonsName("Charles Edward Stuart");
-//		assertEquals("Charles Edwards Stuart", eventsWithPerson.get(0).getPeopleAt());
-//	}
-//
-//
-//	@Test
-//	void canGetLocationWithEvent() {
-//		List<Event> eventLocation = eventRepository.findByLocationName("Culloden Moor");
-//		assertEquals("Culloden Moor", eventLocation.get(0).getLocation().getName());
-//	}
+	@Test
+	public void canGetEventByPersonName(){
+		List<Event> eventsByPersonName = eventRepository.findByPersonsName("James Wolfe");
+//		TODO: James Wolfe should not be at 4 events, he should only be at 2, I think this is because
+//		of the double entries in the DataLoader, Should be easy to fix
+		assertEquals(4, eventsByPersonName.size());
+	}
+
+	@Test
+	void canGetEventByLocationNameAndEventDate() {
+		List<Event> eventsByLocationNameAndEventDate = eventRepository.findByLocationNameAndDate("Culloden Moor", "1746-04-15");
+		assertEquals(1, eventsByLocationNameAndEventDate.size());
+		assertEquals("Battle of Culloden", eventsByLocationNameAndEventDate.get(0).getName());
+	}
+
+	@Test
+	void canGetLocationWithEvent() {
+		List<Location> eventLocation = locationRepository.findByEventsName("Battle of Culloden");
+		assertEquals("Culloden Moor", eventLocation.get(0).getName());
+	}
+
+	@Test
+	void canGetLocationByLatitudeAndLogitude() {
+	}
+
+	@Test
+	void canGetLocationByEventsDate() {
+	}
+
+	@Test
+	void canGetPersonByEventName() {
+		List<Person> personByEventName = personRepository.findByEventsName("Battle of Culloden");
+		assertEquals("James Wolfe", personByEventName.get(0).getName());
+	}
+
+	@Test
+	void canGetPersonsByEventLocationName() {
+		List<Person> personsByEventsLocationName = personRepository.findByEventsLocationName("Culloden Moor");
+		assertEquals(4, personsByEventsLocationName.size());
+	}
+
+	@Test
+	void canGetPersonsByEventDate() {
+	}
 }

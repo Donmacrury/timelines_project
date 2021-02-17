@@ -39,21 +39,21 @@ public class Event {
                     updatable = false
             )}
     )
-    private List<Person> person;
+    private List<Person> persons;
 
     public Event(String name, String date, Location location, String description) {
         this.name = name;
         this.date = date;
         this.location = location;
         this.description = description;
-        this.person = new ArrayList<>();
+        this.persons = new ArrayList<>();
     }
 
     public Event() {
     }
 
     public void addPerson(Person person){
-        this.person.add(person);
+        this.persons.add(person);
     }
 
     public Long getId() {
@@ -97,10 +97,10 @@ public class Event {
     }
 
     public List<Person> getPersons() {
-        return person;
+        return persons;
     }
 
     public void setPersons(List<Person> persons) {
-        this.person = persons;
+        this.persons = persons;
     }
 }

@@ -13,6 +13,4 @@ public interface LocationRepository extends JpaRepository<Location, Long> {
     List<Location> findByLatitudeAndLongitude (Double latitude, Double longitude);
     List<Location> findByEventsName (String eventName);
     List<Location> findByEventsDate(String date);
-    List<Location> findByNameAndEventsDate(String name, String date);
-
 }

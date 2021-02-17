@@ -32,9 +32,6 @@ public class LocationController {
         if(name==null && latitude==null && longitude==null && eventName==null && eventDate!= null){
             return new ResponseEntity(locationRepository.findByEventsDate(eventDate), HttpStatus.OK);
         }
-        if(name!=null && latitude==null && longitude==null && eventName==null && eventDate!=null){
-            return new ResponseEntity(locationRepository.findByNameAndEventsDate(name, eventDate), HttpStatus.OK);
-        }
         return new ResponseEntity(locationRepository.findAll(), HttpStatus.OK);
     }
 
