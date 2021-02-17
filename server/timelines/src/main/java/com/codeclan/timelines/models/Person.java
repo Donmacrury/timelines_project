@@ -18,15 +18,15 @@ public class Person {
     @Column
     private String nationality;
     @Column
-    private Date birthDate;
+    private String birthDate;
     @Column
-    private Date deathDate;
-    @ManyToOne
+    private String deathDate;
+    @ManyToMany
     @JoinColumn(name="event_id")
     @JsonIgnoreProperties({"persons"})
     private List<Event> events;
 
-    public Person(String name, String nationality, Date birthDate, Date deathDate) {
+    public Person(String name, String nationality, String birthDate, String deathDate) {
         this.name = name;
         this.nationality = nationality;
         this.birthDate = birthDate;
@@ -53,19 +53,19 @@ public class Person {
         this.nationality = nationality;
     }
 
-    public Date getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Date birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 
-    public Date getDeathDate() {
+    public String getDeathDate() {
         return deathDate;
     }
 
-    public void setDeathDate(Date deathDate) {
+    public void setDeathDate(String deathDate) {
         this.deathDate = deathDate;
     }
 

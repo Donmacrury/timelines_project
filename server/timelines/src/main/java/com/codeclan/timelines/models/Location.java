@@ -17,14 +17,17 @@ public class Location {
     @Column
     private double longitude;
     @Column
+    private String name;
+    @Column
     private String description;
     @OneToMany(mappedBy = "location")
     @JsonIgnoreProperties({"location"})
     private List<Event> events;
 
-    public Location(double latitude, double longitude, String description) {
+    public Location(double latitude, double longitude, String name, String description) {
         this.latitude = latitude;
         this.longitude = longitude;
+        this.name = name;
         this.description = description;
         this.events = new ArrayList<>();
     }
@@ -54,6 +57,14 @@ public class Location {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {

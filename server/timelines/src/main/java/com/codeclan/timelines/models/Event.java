@@ -16,18 +16,19 @@ public class Event {
     @Column
     private String name;
     @Column
-    private Date date;
+    private String date;
     @ManyToOne
     @JoinColumn(name="location_id")
     @JsonIgnoreProperties({"events"})
     private Location location;
     @Column
     private String description;
-    @OneToMany(mappedBy = "event")
+    @ManyToMany
+    @JoinColumn(name="person_id")
     @JsonIgnoreProperties({"event"})
     private List<Person> peopleAt;
 
-    public Event(String name, Date date, Location location, String description) {
+    public Event(String name, String date, Location location, String description) {
         this.name = name;
         this.date = date;
         this.location = location;
@@ -54,11 +55,11 @@ public class Event {
         this.name = name;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
