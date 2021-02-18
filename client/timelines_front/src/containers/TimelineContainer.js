@@ -42,6 +42,7 @@ useEffect(()=>{
 }, [])
 
 
+
 return (
     <MapComponent events={events} />
 )

@@ -1,11 +1,10 @@
 const MapComponent = ({events}) => {
 
+    console.log({events})
 
-
-
-    return (
-
-    )
-}
+        return (
+            <>{events}</>
+        )
+ }
 
 export default MapComponent;
