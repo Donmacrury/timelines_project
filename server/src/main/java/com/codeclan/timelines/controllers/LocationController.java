@@ -46,7 +46,8 @@ public class LocationController {
     }
 
     @PatchMapping("/locations/{id}")
-    public ResponseEntity updateLocation(@RequestBody Location location){
+    public ResponseEntity updateLocation(@RequestBody Location location, @PathVariable Long id){
+        location.setId(id);
         return new ResponseEntity(locationRepository.save(location), HttpStatus.OK);
     }
 
