@@ -45,7 +45,7 @@ public class LocationController {
         return new ResponseEntity(locationRepository.save(location), HttpStatus.CREATED);
     }
 
-    @PutMapping("/locations/{id}")
+    @PatchMapping("/locations/{id}")
     public ResponseEntity updateLocation(@RequestBody Location location){
         return new ResponseEntity(locationRepository.save(location), HttpStatus.OK);
     }

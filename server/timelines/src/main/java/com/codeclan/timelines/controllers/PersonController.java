@@ -43,8 +43,7 @@ public class PersonController {
         return new ResponseEntity<>(person, HttpStatus.OK);
     }
 
-
-    @PutMapping("/persons/{id}")
+    @PatchMapping("/persons/{id}")
     public ResponseEntity updatePersons(@RequestBody Person person){
         return new ResponseEntity(personRepository.save(person), HttpStatus.OK);
     }
