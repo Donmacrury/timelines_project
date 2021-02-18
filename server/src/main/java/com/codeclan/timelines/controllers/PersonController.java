@@ -44,9 +44,17 @@ public class PersonController {
     }
 
     @PatchMapping("/persons/{id}")
-    public ResponseEntity updatePersons(@RequestBody Person person){
+    public ResponseEntity updatePerson(@RequestBody Person person, @PathVariable Long id){
+        person.setId(id);
         return new ResponseEntity(personRepository.save(person), HttpStatus.OK);
     }
+
+
+//    @PatchMapping(value = "/persons/{id}")
+//    public ResponseEntity<Person> updatePirate(@RequestBody Person person){
+//        personRepository.save(person);
+//        return new ResponseEntity<>(person, HttpStatus.OK);
+//    }
 
     @DeleteMapping("/persons/{id}")
     public void deletePerson(@PathVariable Long id){
