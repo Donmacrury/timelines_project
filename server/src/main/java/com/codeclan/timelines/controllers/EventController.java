@@ -36,7 +36,7 @@ public class EventController {
         return new ResponseEntity(eventRepository.save(event), HttpStatus.CREATED);
     }
 
-    @PutMapping("/events/{id}")
+    @PatchMapping("/events/{id}")
     public ResponseEntity updateEvent(@RequestBody Event event){
         return new ResponseEntity(eventRepository.save(event), HttpStatus.OK);
     }

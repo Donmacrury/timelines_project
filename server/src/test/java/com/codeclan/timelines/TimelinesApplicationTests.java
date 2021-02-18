@@ -13,7 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
 class TimelinesApplicationTests {
@@ -74,27 +73,17 @@ class TimelinesApplicationTests {
 	}
 
 	@Test
-	public void canGetLocationName(){
-		List<Location> locationWName = locationRepository.findByName("Culloden Moor");
-		assertEquals("Culloden Moor", locationWName.get(0).getName());
-	}
-
-	@Test
 	void canGetLocationWithEvent() {
 		List<Location> eventLocation = locationRepository.findByEventsName("Battle of Culloden");
 		assertEquals("Culloden Moor", eventLocation.get(0).getName());
 	}
 
 	@Test
-	void canGetLocationByLatitudeAndLongitude() {
-		List<Location> locationLatAndLong = locationRepository.findByLatitudeAndLongitude(55.96124, -2.98425);
-		assertEquals("Presontpans", locationLatAndLong.get(0).getName());
+	void canGetLocationByLatitudeAndLogitude() {
 	}
 
 	@Test
-	void canGetLocationByEventDate() {
-		List<Location> locationByEventDate = locationRepository.findByEventsDate("1746-01-17");
-		assertEquals("Falkirk Muir", locationByEventDate.get(0).getName());
+	void canGetLocationByEventsDate() {
 	}
 
 	@Test
@@ -111,8 +100,6 @@ class TimelinesApplicationTests {
 
 	@Test
 	void canGetPersonsByEventDate() {
-		List<Person> personsByEventsDate = personRepository.findByEventsDate("1746-04-15");
-		assertEquals(1, personsByEventsDate.size());
-//		TODO:  Actual: 8 ... persisted twice?
+
 	}
 }

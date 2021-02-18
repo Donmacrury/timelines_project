@@ -40,11 +40,10 @@ public class PersonController {
 
     @PostMapping("/persons")
     public ResponseEntity<Person> createPerson(@RequestBody Person person){ personRepository.save(person);
-        return new ResponseEntity<>(person, HttpStatus.OK);
+        return new ResponseEntity<>(person, HttpStatus.CREATED);
     }
 
-
-    @PutMapping("/persons/{id}")
+    @PatchMapping("/persons/{id}")
     public ResponseEntity updatePersons(@RequestBody Person person){
         return new ResponseEntity(personRepository.save(person), HttpStatus.OK);
     }
