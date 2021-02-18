@@ -1,19 +1,20 @@
 import Person from "./Person";
+import Event from "./Events";
 
-const MapComponent = ({persons}) => {
+const MapComponent = ({events}) => {
 
-    console.log({persons})
+    console.log({events})
 
-        const personNodes = persons.map((currentPerson, index)=>{
+        const eventNodes = events.map((currentEvent, index)=>{
             return(
                 <li key={index}> 
-            <Person person={currentPerson}/></li>
+            <Event event={currentEvent}/></li>
             )
         });
     
         return (
-            <section >
-                {personNodes}
+            <section>
+                {eventNodes}
             </section>
         )
 
