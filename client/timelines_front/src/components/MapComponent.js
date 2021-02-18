@@ -1,10 +1,22 @@
-const MapComponent = ({events}) => {
+import Person from "./Person";
 
-    console.log({events})
+const MapComponent = ({persons}) => {
 
+    console.log({persons})
+
+        const personNodes = persons.map((currentPerson, index)=>{
+            return(
+                <li key={index}> 
+            <Person person={currentPerson}/></li>
+            )
+        });
+    
         return (
-            <>{events}</>
+            <section >
+                {personNodes}
+            </section>
         )
+
  }
 
 export default MapComponent;

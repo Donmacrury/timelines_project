@@ -1,10 +1,11 @@
+import MapComponent from "../components/MapComponent"
 import {useEffect, useState} from "react";
 
 const TimelineContainer = () => {
 
 const [events, setEvents] = useState([]);
 const [persons, setPersons] = useState([]);
-const [location, setLocation] = useState([]);
+const [locations, setLocations] = useState([]);
 
 const eventURL = `http://localhost:8080/events`;
 const personURL = `http://localhost:8080/persons`;
@@ -31,7 +32,7 @@ const fetchLocation = () => {
     fetch(locationURL)
     .then((res)=>res.json())
     .then((data)=> {
-        setLocation(data)
+        setLocations(data)
     })
 }
 
@@ -44,7 +45,7 @@ useEffect(()=>{
 
 
 return (
-    <MapComponent events={events} />
+    <MapComponent persons={persons} />
 )
 
 }
