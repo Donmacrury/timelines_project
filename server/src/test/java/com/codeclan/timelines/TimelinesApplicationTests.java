@@ -98,8 +98,10 @@ class TimelinesApplicationTests {
 		assertEquals(4, personsByEventsLocationName.size());
 	}
 
-	@Test
-	void canGetPersonsByEventDate() {
+//	@Test
+//	void canGetPersonsByEventDate() {
+//		List<Person> personsByEventDate = personRepository.findByEventsDate("1746-04-15");
+//		assertEquals(8, personsByEventDate.size());
 
-	}
+
 }

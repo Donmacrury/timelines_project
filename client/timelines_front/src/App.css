@@ -16,6 +16,21 @@
 #mapid { 
   height: 420px;
   width: 400px;
+
+}
+
+.pageContainer {
+  width: 100%;
+  background-color:cornsilk;
+  margin: auto;
+  padding-right: 0px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  text-align:center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight:bolder;
+  font-size: 3rem;
+  color: rgb(91, 91, 91);
 }
 
 .App-header {

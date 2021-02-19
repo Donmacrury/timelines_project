@@ -34,6 +34,21 @@ const MapComponent = ({events, locations, persons}) => {
             <Person person={currentPerson}/> </li>
             )
         });
+
+
+        const locationNodes = locations.map((currentLocation, index)=>{
+            return(
+                <li key={index}> 
+            <Location location={currentLocation}/></li>
+            )
+        });
+
+        const personNodes =  persons.map((currentPerson, index) => {
+            return (
+                <li key={index}>
+            <Person person={currentPerson}/> </li>
+            )
+        });
     
         // TODO: get working coordinates for each event
         const handleEventCoordinates = () => {
