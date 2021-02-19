@@ -5,7 +5,10 @@ import TimelineContainer from './containers/TimelineContainer';
 
 function App() {
   return (
+    <>
+    <div className="pageContainer">Historical Timelines</div>
     <TimelineContainer/>
+    </>
   );
 }
 

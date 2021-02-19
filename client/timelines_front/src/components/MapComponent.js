@@ -1,9 +1,13 @@
+import Event from "./Event";
+import Location from "./Location";
+import "../containers/TimeLineContainer.css";
 import Person from "./Person";
-import Event from "./Events";
 
-const MapComponent = ({events}) => {
+const MapComponent = ({events, locations, persons}) => {
 
-    console.log({events})
+    if (!events || !locations || !persons){
+        return <span>SOMETHING AINT RIGHT</span>;
+    }
 
         const eventNodes = events.map((currentEvent, index)=>{
             return(
@@ -11,11 +15,34 @@ const MapComponent = ({events}) => {
             <Event event={currentEvent}/></li>
             )
         });
+
+
+        const locationNodes = locations.map((currentLocation, index)=>{
+            return(
+                <li key={index}> 
+            <Location location={currentLocation}/></li>
+            )
+        });
+
+        const personNodes =  persons.map((currentPerson, index) => {
+            return (
+                <li key={index}>
+            <Person person={currentPerson}/> </li>
+            )
+        });
     
         return (
-            <section>
-                {eventNodes}
-            </section>
+            <>
+                <div className="eventGrid">
+                    {eventNodes}
+                </div>
+                <div className="locationGrid">
+                    {locationNodes}
+                </div>
+                <div className="personsGrid">
+                    {personNodes}
+                </div>
+            </>
         )
 
  }

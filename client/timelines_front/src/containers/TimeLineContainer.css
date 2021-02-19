@@ -1,0 +1,39 @@
+
+
+.mainComponentCont{
+    width: 70%;
+    background-color:cornsilk;
+    margin: auto;
+    padding: 20px;
+    text-align:center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bolder;
+    color: rgb(91, 91, 91);
+}
+
+/* .pageSubHeading {
+    background-color: rgb(91, 91, 91);
+    color: cornsilk;
+    padding: 20px 20px 20px 20px;
+} */
+
+.eventGrid{
+    margin: 20px;
+    padding: 30px;
+    text-align: left;
+    background-color: greenyellow;
+}
+
+.locationGrid{
+    margin: 20px;
+    padding: 30px;
+    text-align: left;
+    background-color: blueviolet;
+}
+
+.personsGrid{
+    margin: 20px;
+    padding: 30px;
+    text-align: left;
+    background-color: coral;
+}
