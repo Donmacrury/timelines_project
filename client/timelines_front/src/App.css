@@ -13,7 +13,10 @@
   }
 }
 
-#mapid { height: 180px;}
+#mapid { 
+  height: 420px;
+  width: 400px;
+}
 
 .App-header {
   background-color: #282c34;

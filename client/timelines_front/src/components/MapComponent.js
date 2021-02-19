@@ -28,7 +28,7 @@ const MapComponent = ({events}) => {
 
         return (
             <>
-            <MapContainer id = 'mapid'center={[51.505, -0.09]} zoom={10} scrollWheelZoom={false}>
+            <MapContainer id = 'mapid'center={[54.4, -3.8]} zoom={5.2} scrollWheelZoom={false}>
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
