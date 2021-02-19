@@ -2,7 +2,6 @@ import Event from "./Event";
 import Location from "./Location";
 import "../containers/TimeLineContainer.css";
 import Person from "./Person";
-import Event from "./Events";
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 

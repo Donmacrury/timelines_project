@@ -1,6 +1,6 @@
 
 
-const Events = ({event}) => {
+const Event = ({event}) => {
 
     return (
         <>
@@ -15,4 +15,4 @@ const Events = ({event}) => {
 
 
 }
-export default Events;
+export default Event;
