@@ -14,9 +14,21 @@ const MapComponent = ({events}) => {
             )
         });
     
+        // TODO: get working coordinates for each event
+        const handleEventCoordinates = () => {
+            // work out which form o fhte events list we need to grab the relevant 
+            // location data
+            // const centerCoords = eventNodes[0]//get this events location
+        }
+
+        // TODO: a hook for events
+        // useEffect(()=>{handleEventCoordinates()},[events])
+
+        // TODO: handle date for each individual event
+
         return (
             <>
-            <MapContainer id = 'mapid'center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+            <MapContainer id = 'mapid'center={[51.505, -0.09]} zoom={10} scrollWheelZoom={false}>
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
