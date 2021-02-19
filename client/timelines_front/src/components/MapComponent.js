@@ -1,3 +1,4 @@
+import {useState, useEffect} from "react";
 import Event from "./Event";
 import Location from "./Location";
 import "../containers/TimeLineContainer.css";
@@ -6,6 +7,14 @@ import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 
 const MapComponent = ({events, locations, persons}) => {
+
+    const [currentLocation, setCurrentLocation] = useState({ lat: 53.4084, lng: -2.9916 });
+    const [zoom, setZoom] = useState(5);
+    const markerIcon = L.icon({
+        
+        iconUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Muskets.svg/1488px-Muskets.svg.png", 
+        iconSize: [32, 32] 
+      });
 
     if (!events || !locations || !persons){
         return <span>SOMETHING AINT RIGHT</span>;
@@ -35,6 +44,35 @@ const MapComponent = ({events, locations, persons}) => {
             )
         });
 
+
+        // const locationNodes = locations.map((currentLocation, index)=>{
+        //     return (
+        //     <Marker key={index} position={[currentLocation.latitude, currentLocation.longitude]} icon={markerIcon} >
+        //         <Popup>
+        //             <Location
+        //             name={currentLocation.name}
+        //             description={currentLocation.description}
+        //         />
+        //         </Popup>
+        //       </Marker>
+        //       )
+        // })
+
+        const eventMarker = events.map((currentEvent, index)=>{
+            return (
+                <Marker key={index} position={[currentEvent.location.latitude, currentEvent.location.longitude]} icon={markerIcon} >
+                <Popup>
+                    Place
+                    <Event
+                    event={currentEvent}
+                /> 
+                </Popup>
+              </Marker>
+            )
+        })
+
+
+
     
         // TODO: get working coordinates for each event
         const handleEventCoordinates = () => {
@@ -52,26 +90,22 @@ const MapComponent = ({events, locations, persons}) => {
 
         return (
             <>
-            <MapContainer id = 'mapid'center={[54.4, -3.8]} zoom={5.2} scrollWheelZoom={false}>
+            <MapContainer id = 'mapid' center={currentLocation} zoom={zoom} scrollWheelZoom={false}>
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[51.505, -0.09]}>
-                <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-            </Marker>
+            {eventMarker}
             </MapContainer>
+
             <section>
-                
-        
+
                 <div className="eventGrid">
                     {eventNodes}
                 </div>
                 <div className="locationGrid">
                     {locationNodes}
-                </div>
+              </div>
                 <div className="personsGrid">
                     {personNodes}
                 </div>
