@@ -1,24 +1,48 @@
+import Event from "./Event";
+import Location from "./Location";
+import "../containers/TimeLineContainer.css";
 import Person from "./Person";
 import Event from "./Events";
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 
-const MapComponent = ({events}) => {
+const MapComponent = ({events, locations, persons}) => {
 
-    console.log({events})
+    if (!events || !locations || !persons){
+        return <span>SOMETHING AINT RIGHT</span>;
+    }
 
         const eventNodes = events.map((currentEvent, index)=>{
             return(
+                
+            <li key={index}> 
+            <Event event={currentEvent}/>
+            </li>
+            )
+        });
+
+
+        const locationNodes = locations.map((currentLocation, index)=>{
+            return(
                 <li key={index}> 
-            <Event event={currentEvent}/></li>
+            <Location location={currentLocation}/></li>
+            )
+        });
+
+        const personNodes =  persons.map((currentPerson, index) => {
+            return (
+                <li key={index}>
+            <Person person={currentPerson}/> </li>
             )
         });
     
         // TODO: get working coordinates for each event
         const handleEventCoordinates = () => {
-            // work out which form o fhte events list we need to grab the relevant 
-            // location data
-            // const centerCoords = eventNodes[0]//get this events location
+            // work out which form o fhte events list we need
+            //  to then grab the relevant location data
+            // const centerCoords = eventNodes[0]
+
+            //get this events location
         }
 
         // TODO: a hook for events
@@ -40,7 +64,18 @@ const MapComponent = ({events}) => {
             </Marker>
             </MapContainer>
             <section>
-                {eventNodes}
+                
+        
+                <div className="eventGrid">
+                    {eventNodes}
+                </div>
+                <div className="locationGrid">
+                    {locationNodes}
+                </div>
+                <div className="personsGrid">
+                    {personNodes}
+                </div>
+                
             </section>
             </>
         )
