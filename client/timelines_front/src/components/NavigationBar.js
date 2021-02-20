@@ -8,7 +8,15 @@ const NavBar = () => {
     }
     return (
         <nav class="navbar">
-
+            <li>
+                <Link className='navbar-link' to='/'>Home</Link>
+            </li>
+            <li>
+                <Link className='navbar-link' to='/timeline'>Timeline</Link>
+            </li>
+            <li>
+                <Link className='navbar-link' to='/ww1map'>World War One Map</Link>
+            </li>
         </nav>
     )
 }
