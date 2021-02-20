@@ -1,39 +1,15 @@
-import Event from "./Event";
-import Location from "./Location";
+import Event from "./Event/Event";
+import Location from "./Location/Location";
 import "../containers/TimeLineContainer.css";
-import Person from "./Person";
+import Person from "./Person/Person";
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 
-const MapComponent = ({events, locations, persons}) => {
+const MapComponent = ({viewEventDetails, mapEvents, eventDetails}) => {
 
-    if (!events || !locations || !persons){
-        return <span>SOMETHING AINT RIGHT</span>;
-    }
-
-        const eventNodes = events.map((currentEvent, index)=>{
-            return(
-                
-            <li key={index}> 
-            <Event event={currentEvent}/>
-            </li>
-            )
-        });
-
-
-        const locationNodes = locations.map((currentLocation, index)=>{
-            return(
-                <li key={index}> 
-            <Location location={currentLocation}/></li>
-            )
-        });
-
-        const personNodes =  persons.map((currentPerson, index) => {
-            return (
-                <li key={index}>
-            <Person person={currentPerson}/> </li>
-            )
-        });
+    // if (!events || !locations || !persons){
+    //     return <span>SOMETHING AINT RIGHT</span>;
+    // }
 
     
         // TODO: get working coordinates for each event
@@ -63,20 +39,20 @@ const MapComponent = ({events, locations, persons}) => {
                 </Popup>
             </Marker>
             </MapContainer>
-            <section>
+            {/* <section> */}
                 
         
-                <div className="eventGrid">
+                {/* <div className="eventGrid">
                     {eventNodes}
                 </div>
                 <div className="locationGrid">
                     {locationNodes}
                 </div>
                 <div className="personsGrid">
-                    {personNodes}
-                </div>
+                    {personNodes} */}
+                {/* </div>
                 
-            </section>
+            </section> */}
             </>
         )
 
