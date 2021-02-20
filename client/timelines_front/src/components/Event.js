@@ -11,9 +11,8 @@ const Event = ({event, viewEventDetails}) => {
 
     return (
         <>
-        <p>{event.location.name}</p>
-        <p>{event.description}</p>
-        <p>{event.date}</p>
+        <p>{event.location.name} ({event.date})</p>
+        <p>{event.location.latitude}, {event.location.longitude}</p>
         <button onClick={getEventID}>More Details</button>
         </>
     
