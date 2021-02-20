@@ -15,6 +15,8 @@ const TimelinePage = ({event}) => {
             {/* <VerticalTimeline>
             {timelineEvents.map(event => {
                 let isBattleIcon - event.type ===="work";
+                conditional logic for hasPersonList to see if the event has a list of person to then
+                make the list of people button show up
 
                 return(
                     <VerticalTimelineElement
