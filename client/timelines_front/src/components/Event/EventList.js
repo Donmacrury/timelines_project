@@ -1,10 +1,12 @@
-const Eventlist = ({events}) => {
+import Event from "./Event";
 
-    if (!events){
+const Eventlist = ({filteredEvents}) => {
+
+    if (!filteredEvents){
         return <span>SOMETHING AINT RIGHT</span>;
     }
 
-    const eventNodes = events.map((currentEvent, index)=>{
+    const eventNodes = filteredEvents.map((currentEvent, index)=>{
         return(
             
         <li key={index}> 
@@ -34,4 +36,4 @@ const Eventlist = ({events}) => {
     )
 
 }
-export default EventList;
+export default Eventlist;

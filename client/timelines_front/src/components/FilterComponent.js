@@ -1,18 +1,21 @@
-const FilterComponent = ({userChange}) => {
 
-    const handleUserInput = (event) => {
-        const userInput = event.target.value;
-        userChange(userInput);
+const FilterComponent = ({events, changeEvent}) => {
+
+    const handleUserInput = (e) => {
+        const userInput = e.target.value;
+        changeEvent(userInput);
     }
-    
-return (
-    <div>
-        <span>
-            search events
-        </span>
-        <input type="text" placeholder="search..." onChange={handleUserInput}> </input>
-    </div>
-)
 
-}
+    return (
+
+        <div>
+            <span> search event bar </span> 
+            <input type="text" 
+            placeholder="Search something..." 
+            onChange={handleUserInput}></input>
+        </div>
+
+    
+    )
+} 
 export default FilterComponent;
