@@ -7,12 +7,11 @@ import Person from "./Person";
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 
-const MapComponent = ({events, locations, persons, getEventDetails, eventDetails}) => {
+const MapComponent = ({events, locations, persons, viewEventDetails, eventDetails}) => {
 
     const [currentLocation, setCurrentLocation] = useState({ lat: 53.4084, lng: -2.9916 });
     const [zoom, setZoom] = useState(5);
-    const markerIcon = L.icon({
-        
+    const markerIcon = L.icon({  
         iconUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Muskets.svg/1488px-Muskets.svg.png", 
         iconSize: [32, 32] 
       });
@@ -21,15 +20,13 @@ const MapComponent = ({events, locations, persons, getEventDetails, eventDetails
         return <span>SOMETHING AINT RIGHT</span>;
     }
 
-
-
         const eventMarker = events.map((currentEvent, index)=>{
             return (
                 <Marker key={index} position={[currentEvent.location.latitude, currentEvent.location.longitude]} icon={markerIcon} >
                 <Popup>
                     <Event
                     event={currentEvent}
-                    getEventDetails={getEventDetails}
+                    viewEventDetails={viewEventDetails}
                 /> 
                 </Popup>
               </Marker>

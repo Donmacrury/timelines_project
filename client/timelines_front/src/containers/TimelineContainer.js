@@ -7,7 +7,7 @@ const TimelineContainer = () => {
 const [events, setEvents] = useState([]);
 const [persons, setPersons] = useState([]);
 const [locations, setLocations] = useState([]);
-const [eventDetails, setEventDetails] = useState([]);
+const [eventDetails, setEventDetails] = useState(null);
 
 
 const fetchEvents = () => {
@@ -39,14 +39,21 @@ const fetchLocations = () => {
     })
 }
 
- const getEventDetails = idToView=>{
+ const getEventDetails = (idToView)=>{
 
-    return fetch(`http://localhost:8080/events/${idToView}`)
+     return fetch(`http://localhost:8080/events/${idToView}`)
     .then(res => res.json())
-    .then((data)=>{
-        setEventDetails(data);
-    })
 };
+
+ const viewEventDetails = idToView => {
+    
+    getEventDetails(idToView)
+    .then((data) => {
+        console.log(data)
+        setEventDetails(data)
+    })
+    
+}
 
 
 useEffect(()=>{
@@ -62,7 +69,7 @@ return (
 <>
     <div id="mainComponentCont">
     
-    <MapComponent events={events} locations={locations} persons={persons} furtherDetails={getEventDetails} eventDetails={eventDetails}/>
+    <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails}/>
 
     </div>
 </>
