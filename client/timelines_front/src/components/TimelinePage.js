@@ -37,3 +37,5 @@ const TimelinePage = ({event}) => {
         </>
     )
 }
+
+export default TimelinePage;
