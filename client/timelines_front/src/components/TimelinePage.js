@@ -26,7 +26,8 @@ const TimelinePage = ({event}) => {
                     >
                     <h3 className="eventName">{event.name}</h3>
                     <h5 className="eventLocation">{event.location}</h5>
-                    
+                    <p id="description">{event.description}</p>
+                    <button>People</button> this should have a popup for a list of people at the event
                     </VerticleTimelineElement>
                 );
             })}
