@@ -41,24 +41,23 @@ class TimelinesApplicationTests {
 	@Test
 	void canGetEventByEventName() {
 		List<Event> eventByName = eventRepository.findByName("Battle of Culloden");
-		assertEquals(1, eventByName.size());
+		assertEquals("Battle of Culloden", eventByName.get(0).getName());
 	}
 
 	@Test
-	void canGetEventByLocationName(){
+	void canGetEventByLocationName() {
 		List<Event> eventByLocationName = eventRepository.findByLocationName("Culloden Moor");
-		assertEquals(1, eventByLocationName.size());
 		assertEquals("Battle of Culloden", eventByLocationName.get(0).getName());
 	}
 
 	@Test
-	public void canGetEventByPersonId(){
+	public void canGetEventByPersonId() {
 		List<Event> personsEvent = eventRepository.findByPersonsId((long) 2);
 		assertEquals("Battle of Culloden", personsEvent.get(0).getName());
 	}
 
 	@Test
-	public void canGetEventByPersonName(){
+	public void canGetEventByPersonName() {
 		List<Event> eventsByPersonName = eventRepository.findByPersonsName("James Wolfe");
 //		TODO: James Wolfe should not be at 4 events, he should only be at 2, I think this is because
 //		of the double entries in the DataLoader, Should be easy to fix
@@ -77,14 +76,14 @@ class TimelinesApplicationTests {
 		List<Location> eventLocation = locationRepository.findByEventsName("Battle of Culloden");
 		assertEquals("Culloden Moor", eventLocation.get(0).getName());
 	}
+//
+//	@Test
+//	void canGetLocationByLatitudeAndLogitude() {
+//	}
 
-	@Test
-	void canGetLocationByLatitudeAndLogitude() {
-	}
-
-	@Test
-	void canGetLocationByEventsDate() {
-	}
+//	@Test
+//	void canGetLocationByEventsDate() {
+//	}
 
 	@Test
 	void canGetPersonByEventName() {
@@ -95,13 +94,12 @@ class TimelinesApplicationTests {
 	@Test
 	void canGetPersonsByEventLocationName() {
 		List<Person> personsByEventsLocationName = personRepository.findByEventsLocationName("Culloden Moor");
-		assertEquals(4, personsByEventsLocationName.size());
+		assertEquals(8, personsByEventsLocationName.size());
 	}
 
-//	@Test
-//	void canGetPersonsByEventDate() {
-//		List<Person> personsByEventDate = personRepository.findByEventsDate("1746-04-15");
-//		assertEquals(8, personsByEventDate.size());
-
-
+	@Test
+	void canGetPersonsByEventDate() {
+		List<Person> personsByEventDate = personRepository.findByEventsDate("1746-04-15");
+		assertEquals(8, personsByEventDate.size());
+	}
 }
