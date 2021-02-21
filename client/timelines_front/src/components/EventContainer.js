@@ -31,12 +31,13 @@ const EventContainer = () => {
     useEffect(()=>{
         fetchEvents();
         setEvents();
-        // setEventFilter(timelineDetails);
     }, []);
     
 return (
     <>
+        <h2>Below should be the filter search bar!</h2>
         <FilterSearch onUserInput={handleUserFilter}/>
+        <h2>Below should be event list!</h2>
         <EventList filteredEvents = {eventFilter}/> 
         
     </>

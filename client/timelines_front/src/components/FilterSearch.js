@@ -8,9 +8,6 @@ const FilterSearch = ({onUserInput}) => {
         onUserInput(userInput);
     }
 
-    // useEffect(()=>{
-    //     setEvent();
-    // }, [events]);
 
     return (
         <>
@@ -19,7 +16,6 @@ const FilterSearch = ({onUserInput}) => {
                 <input type="text" 
                 placeholder="e.g. Battle of Culloden" 
                 onChange={handleFilterInput}/>
-                {/* // onChange={() => handleUserInput()}/> */}
                 {/* <h6>{filteredEvents}</h6> */}
 
         </> 

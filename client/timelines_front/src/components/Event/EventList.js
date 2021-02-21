@@ -8,8 +8,14 @@ const Eventlist = ({filteredEvents}) => {
 
         const eventNodes = filteredEvents.map((object, index) => {
             return (
-                <li> <Event filteredEvent={object} key={index}/>
-                </li>
+                <>
+                <h3>Below should be the individual event object!</h3>
+
+                    <li> <Event filteredEvent={object} key={index}/>
+                    </li>
+
+                </>
+                
             );
         })
 
@@ -21,26 +27,6 @@ const Eventlist = ({filteredEvents}) => {
             </>
         )
     }
-
-    // const locationNodes = locations.map((currentLocation, index)=>{
-    //     return(
-    //         <li key={index}> 
-    //     <Location location={currentLocation}/></li>
-    //     )
-    // });
-
-    // const personNodes =  persons.map((currentPerson, index) => {
-    //     return (
-    //         <li key={index}>
-    //     <Person person={currentPerson}/> </li>
-    //     )
-    // });
-
-    // return(
-    //     <section>
-    //         {eventNodes}
-    //     </section>
-    // )
 
 }
 export default Eventlist;
