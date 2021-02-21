@@ -1,14 +1,15 @@
 
 
-const Event = ({newEvents}) => {
+const Event = ({filteredEvent}) => {
+
 
     return (
-        <>
-        <p>{newEvents.name}</p>
-        <p>{newEvents.description}</p>
-        <p>{newEvents.date}</p>
-        <button onClick>Click Here</button>
-        </>
+        <div>
+            <p>{filteredEvent.name}</p>
+            <p>{filteredEvent.description}</p>
+            <p>{filteredEvent.date}</p>
+        </div>
+        
     
     )
 

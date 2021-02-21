@@ -1,7 +1,7 @@
 import MapComponent from "../components/MapComponent";
 import {useEffect, useState} from "react";
 import "./TimeLineContainer.css";
-import FilterComponent from "../components/FilterContainer";
+import EventContainer from "../components/EventContainer";
 
 const TimelineContainer = () => {
 
@@ -16,6 +16,7 @@ const fetchPersons = () => {
     fetch(personURL)
     .then((res)=>res.json())
     .then((data)=> {
+        
         setPersons(data)
     })
 }

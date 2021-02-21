@@ -1,17 +1,25 @@
 import Event from "./Event";
 
-const Eventlist = ({newEvents, index}) => {
+const Eventlist = ({filteredEvents}) => {
 
-    if (!newEvents){
+    if (!filteredEvents){
         return <span>SOMETHING AINT RIGHT</span>;
     } else {
 
+        const eventNodes = filteredEvents.map((object, index) => {
+            return (
+                <li> <Event filteredEvent={object} key={index}/>
+                </li>
+            );
+        })
+
         return(
-            
-            <li key={index}> 
-            <Event event={newEvents}/>
-            </li>
-            )
+            <>
+            <ul>
+            {eventNodes}
+            </ul>
+            </>
+        )
     }
 
     // const locationNodes = locations.map((currentLocation, index)=>{
