@@ -58,7 +58,7 @@ const fetchLocations = () => {
 
  const addEventDetails = (data)=>{ 
      
-     fetch(`http://localhost:8080/events`, {
+     return fetch(`http://localhost:8080/events/`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -71,11 +71,9 @@ const fetchLocations = () => {
 const addEvent = (eventAdd)=>{
     addEventDetails(eventAdd);
     console.log(eventAdd);
-    // const updatedEvents = [...events, eventAdd];
-
     }
 
-// addEvent("name")
+
 
 
 useEffect(()=>{

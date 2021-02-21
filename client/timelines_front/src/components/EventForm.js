@@ -1,20 +1,22 @@
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 const EventForm = ({events, eventDetails }) =>{
 
 const [newEvent, setNewEvent] = useState([]);
 
+
     const handleEventSubmit = (e) => {
         e.preventDefault();
-       eventDetails(newEvent);
+       const addedEvent = eventDetails(newEvent);
+       events.push(addedEvent)
         
-    //    console.log(events);
+       console.log(events);
     }
+
 
     const handleChange = (e) => {
         setNewEvent(e.target.value)
       }
-    
     
     return (
         <form onSubmit={handleEventSubmit}>
