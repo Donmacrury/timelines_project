@@ -1,6 +1,7 @@
 import MapComponent from "../components/MapComponent";
 import {useEffect, useState} from "react";
 import "./TimeLineContainer.css";
+import EventForm from "../components/EventForm";
 
 const TimelineContainer = () => {
 
@@ -43,7 +44,7 @@ const fetchLocations = () => {
 
      return fetch(`http://localhost:8080/events/${idToView}`)
     .then(res => res.json())
-};
+}
 
  const viewEventDetails = idToView => {
     
@@ -54,6 +55,27 @@ const fetchLocations = () => {
     })
     
 }
+
+ const addEventDetails = (data)=>{ 
+     
+     fetch(`http://localhost:8080/events`, {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(res => res.json())
+};
+
+const addEvent = (eventAdd)=>{
+    addEventDetails(eventAdd);
+    console.log(eventAdd);
+    // const updatedEvents = [...events, eventAdd];
+
+    }
+
+// addEvent("name")
 
 
 useEffect(()=>{
@@ -68,8 +90,8 @@ useEffect(()=>{
 return (
 <>
     <div id="mainComponentCont">
-    
-    <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails}/>
+    <EventForm events={events} eventDetails={addEvent} setEvents={setEvents}/>
+    <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
 
     </div>
 </>
