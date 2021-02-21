@@ -5,7 +5,8 @@ import EventList from "./Event/EventList";
 const FilterContainer = () => {
 
     const [events, setEvents] = useState([]);
-    const [eventFilter, setEventFilter] = useState([]);
+    // const [parentEventFilter, setParentEventFilter] = useState([]);
+
 
     const fetchEvents = () => {
 
@@ -18,23 +19,22 @@ const FilterContainer = () => {
         })
     }
 
-    const handleUserFilter = (userInput) => {
-        const timelineDetails = events.filter((eventObject) =>{
-            return eventObject.name.toUpperCase().includes(userInput.toUpperCase())
-    }) 
-    setEventFilter(timelineDetails)
-    }
+    // const handleUserFilter = (e) => {
+    //     setParentEventFilter(e);
+    // }
+
 
     useEffect(()=>{
-        handleUserFilter();
+       
         fetchEvents();
     }, []);
     
 return (
     <div>
 
-        <FilterComponent events={events} changeEvent={handleUserFilter}/> 
-        <EventList userChange={eventFilter} filteredEvents={events}/>
+        <FilterComponent events={events} /> 
+        
+        
     </div>
 )
 

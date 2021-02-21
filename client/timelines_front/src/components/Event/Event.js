@@ -1,12 +1,12 @@
 
 
-const Event = ({event}) => {
+const Event = ({newEvents}) => {
 
     return (
         <>
-        <p>{event.location.name}</p>
-        <p>{event.description}</p>
-        <p>{event.date}</p>
+        <p>{newEvents.name}</p>
+        <p>{newEvents.description}</p>
+        <p>{newEvents.date}</p>
         <button onClick>Click Here</button>
         </>
     
