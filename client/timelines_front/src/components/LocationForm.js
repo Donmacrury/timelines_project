@@ -10,14 +10,14 @@ const [description, setDescription] = useState("")
 const handleLocationSubmit = (e)=> {
     e.preventDefault();
 
-const locationObject = {
-    name: name,
-    latitude: latitude,
-    longitude: longitude,
-    description: description
-}
+    const locationObject = {
+        name: name,
+        latitude: latitude,
+        longitude: longitude,
+        description: description
+    }
 
-locationDetails(locationObject)
+    locationDetails(locationObject)
 
 }
 
