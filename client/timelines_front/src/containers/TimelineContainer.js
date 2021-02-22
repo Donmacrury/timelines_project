@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import "./TimeLineContainer.css";
 import EventContainer from "../components/EventContainer";
 import EventForm from "../components/EventForm";
-// import Dropdown from "./Dropdown";
+import LocationForm from "../components/LocationForm";
 
 
 const TimelineContainer = () => {
@@ -88,7 +88,7 @@ const addLocationDetails = (data)=>{
    .then(res => res.json())
    .then((data)=>{
        setLocations([...locations, data])
-   })
+    console.log({data});   })
    .catch((error) => console.log(error))
 
 };
@@ -105,6 +105,8 @@ return (
     <>
         <div id="mainComponentCont">
         <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
+        <LocationForm locations={locations} setLocations={setLocations}/>
+
         <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
 
         </div>

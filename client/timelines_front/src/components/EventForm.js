@@ -1,5 +1,5 @@
 import {useState, useEffect} from "react";
-import Dropdown from "./Dropdown"
+import Dropdown from "./LocationForm"
 
 const EventForm = ({events, eventDetails }) =>{
 
@@ -19,7 +19,7 @@ const [location, setLocation] = useState({});
 
       eventDetails(eventObject)
          
-       console.log(events);
+       console.log(eventObject);
   }
 
 
@@ -47,7 +47,6 @@ const [location, setLocation] = useState({});
           <input name="newEvent" type="text"  value={date} onChange={handleDateChange} />
         </label>
         <pre>
-        <Dropdown options={location} onChange={handleLocationSelect} value={location} placeholder="Select an option" />
         </pre>
         <input type="submit" value="Submit" />
       </form>
