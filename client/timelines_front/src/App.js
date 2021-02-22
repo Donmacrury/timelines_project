@@ -6,8 +6,19 @@ import TimelineContainer from './containers/TimelineContainer';
 function App() {
   return (
     <>
+    
+    {/* 
+    <Router>
+    <NavBar/>
+    <Switch>
+    <Route path="/timeline" exact render={()=> <TimelinePage>}>
+    </Switch>
+    </Router>
+    */}
+    
     <div className="pageContainer">Historical Timelines</div>
     <TimelineContainer/>
+    
     </>
   );
 }
