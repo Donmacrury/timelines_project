@@ -13,6 +13,17 @@ const [persons, setPersons] = useState([]);
 const [locations, setLocations] = useState([]);
 const [eventDetails, setEventDetails] = useState(null);
 
+const fetchEvents = () => {
+
+    const eventURL = `http://localhost:8080/events`;
+    fetch(eventURL)
+    .then((res)=>res.json())
+    .then((data)=> {
+        // console.log(data)
+        setEvents(data)
+        // setEventFilter(data)
+    })
+}
 
 const fetchPersons = () => {
     const personURL = `http://localhost:8080/persons`;
@@ -84,8 +95,6 @@ const addLocationDetails = (data)=>{
 
 };
 
-    
-
 useEffect(()=>{
     fetchEvents();
     fetchPersons();
@@ -96,7 +105,7 @@ return (
     <>
         <div id="mainComponentCont">
         <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
-        {/* <Dropdown locations={locations} locationDetails={addLocationDetails}/> */}
+        <Dropdown locations={locations} locationDetails={addLocationDetails}/>
         <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
 
         </div>

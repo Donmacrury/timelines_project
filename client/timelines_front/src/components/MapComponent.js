@@ -1,7 +1,7 @@
 import {useState, useEffect} from "react";
 import EventDetails from './EventDetails';
 import Event from "./Event";
-import Location from "./Location";
+import Location from "./Location/Location";
 import "../containers/TimeLineContainer.css";
 import Person from "./Person/Person";
 import L from 'leaflet';
@@ -58,7 +58,7 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
             {renderEventDetails()}
             </div>
 
-            <section>
+            {/* <section>
 
                 <div className="eventGrid">
                     {eventNodes}
@@ -70,7 +70,7 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
                     {personNodes} 
                 </div>
                 
-            </section>
+            </section> */}
              
             </>
         )
