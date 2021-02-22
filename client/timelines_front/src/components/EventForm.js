@@ -1,12 +1,11 @@
 import {useState, useEffect} from "react";
-// import Dropdown from "./Dropdown"
+import LocationForm from "./LocationForm";
 
-const EventForm = ({events, eventDetails }) =>{
+const EventForm = ({events, eventDetails, locations}) =>{
 
 const [name, setName] = useState("");
 const [date, setDate] = useState("");
-const [location, setLocation] = useState({id: 3});
-
+const [location, setLocation] = useState({id:3});
 
     const handleEventSubmit = (e) => {
         e.preventDefault();
@@ -19,7 +18,7 @@ const [location, setLocation] = useState({id: 3});
 
       eventDetails(eventObject)
          
-       console.log(events);
+       console.log(eventObject);
   }
 
 
@@ -36,6 +35,16 @@ const [location, setLocation] = useState({id: 3});
       setLocation(e.target.value)
     }
 
+    const locationNodes = locations.map((location) => {
+      if (location) {
+        return (
+        <option value={location.id}>
+          {location.name}
+        </option>
+        )
+      }
+    });
+
     return (
         <form onSubmit={handleEventSubmit}>
         <label>
@@ -46,10 +55,11 @@ const [location, setLocation] = useState({id: 3});
           Date:
           <input name="newEvent" type="text"  value={date} onChange={handleDateChange} />
         </label>
-        <pre>
-        {/* <Dropdown options={location} onChange={handleLocationSelect} value={defaultOption} placeholder="Select an option" /> */}
-              
-            </pre>
+        <label>
+          Location:
+          <select onChange={handleLocationSelect}>
+          {locationNodes}</select>
+        </label>
         <input type="submit" value="Submit" />
       </form>
     )

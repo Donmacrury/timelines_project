@@ -1,9 +1,7 @@
 import {useState, useEffect} from "react";
 import EventDetails from './EventDetails';
 import Event from "./Event";
-import Location from "./Location/Location";
 import "../containers/TimeLineContainer.css";
-import Person from "./Person/Person";
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 
@@ -57,20 +55,6 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
             </MapContainer>
             {renderEventDetails()}
             </div>
-
-            {/* <section>
-
-                <div className="eventGrid">
-                    {eventNodes}
-                </div>
-                <div className="locationGrid">
-                    {locationNodes}
-                </div>
-                <div className="personsGrid">
-                    {personNodes} 
-                </div>
-                
-            </section> */}
              
             </>
         )

@@ -19,6 +19,7 @@ function App() {
     
     <div className="pageContainer">Historical Timelines</div>
     <TimelineContainer/>
+    
     <EventContainer />
     
     </>

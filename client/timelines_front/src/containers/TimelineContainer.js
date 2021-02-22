@@ -3,7 +3,7 @@ import {useEffect, useState} from "react";
 import "./TimeLineContainer.css";
 import EventContainer from "../components/EventContainer";
 import EventForm from "../components/EventForm";
-// import Dropdown from "./Dropdown";
+import LocationForm from "../components/LocationForm";
 
 
 const TimelineContainer = () => {
@@ -14,16 +14,14 @@ const [locations, setLocations] = useState([]);
 const [eventDetails, setEventDetails] = useState(null);
 
 const fetchEvents = () => {
-
     const eventURL = `http://localhost:8080/events`;
     fetch(eventURL)
-    .then((res)=>res.json())
-    .then((data)=> {
-        // console.log(data)
-        setEvents(data)
-        // setEventFilter(data)
+    .then((res) => res.json())
+    .then((data) => {
+      setEvents(data)  
     })
 }
+
 
 const fetchPersons = () => {
     const personURL = `http://localhost:8080/persons`;
@@ -90,7 +88,7 @@ const addLocationDetails = (data)=>{
    .then(res => res.json())
    .then((data)=>{
        setLocations([...locations, data])
-   })
+    console.log({data});   })
    .catch((error) => console.log(error))
 
 };
@@ -104,10 +102,11 @@ useEffect(()=>{
 return (
     <>
         <div id="mainComponentCont">
-        <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
-        <Dropdown locations={locations} locationDetails={addLocationDetails}/>
+        {/* <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/> */}
+        {/* <Dropdown locations={locations} locationDetails={addLocationDetails}/> */}
+        <EventForm locations={locations} events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
+        <LocationForm locations={locations} locationDetails={addLocationDetails} setLocations={setLocations}/>
         <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
-
         </div>
     </>
 
