@@ -2,28 +2,53 @@ import {useState, useEffect} from "react";
 
 const EventForm = ({events, eventDetails }) =>{
 
-const [newEvent, setNewEvent] = useState([]);
+const [name, setName] = useState("");
+const [date, setDate] = useState("");
+const [location, setLocation] = useState({id: 3});
 
 
     const handleEventSubmit = (e) => {
         e.preventDefault();
-       const addedEvent = eventDetails(newEvent);
-       events.push(addedEvent)
-        
-       console.log(events);
+       
+    const eventObject = {
+      name: name,
+      date: date,
+      location: location
     }
 
+      eventDetails(eventObject)
+         
+       console.log(events);
+  }
 
-    const handleChange = (e) => {
-        setNewEvent(e.target.value)
+
+    const handleNameChange = (e) => {
+        setName(e.target.value)
+      
       }
+
+    const handleDateChange = (e) => {
+      setDate(e.target.value)
+    }
     
+    const handleLocationSelect = (e) => {
+      setLocation(e.target.value)
+    }
+
     return (
         <form onSubmit={handleEventSubmit}>
         <label>
           Name:
-          <input type="text" value={newEvent} onChange={handleChange} />
+          <input name="newEvent" type="text" value={name} onChange={handleNameChange} />
         </label>
+        <label>
+          Date:
+          <input name="newEvent" type="text"  value={date} onChange={handleDateChange} />
+        </label>
+        <label>
+          Location:
+          <input name="newEvent" type="option" value={location} />
+        </label> 
         <input type="submit" value="Submit" />
       </form>
     )

@@ -66,15 +66,17 @@ const fetchLocations = () => {
         }
     })
     .then(res => res.json())
+    .then((data)=>{
+        setEvents([...events, data])
+    })
+
+
+    .catch((error) => console.log(error))
+
 };
 
-const addEvent = (eventAdd)=>{
-    addEventDetails(eventAdd);
-    console.log(eventAdd);
-    }
-
-
-
+    // console.log(addEventDetails(events))
+    
 
 useEffect(()=>{
     fetchEvents();
@@ -88,7 +90,7 @@ useEffect(()=>{
 return (
 <>
     <div id="mainComponentCont">
-    <EventForm events={events} eventDetails={addEvent} setEvents={setEvents}/>
+    <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
     <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
 
     </div>

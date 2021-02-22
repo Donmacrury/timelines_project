@@ -7,13 +7,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class EventController {
     @Autowired
     EventRepository eventRepository;
 
     @GetMapping("/events")
-    public ResponseEntity getAllEvents(
+    public ResponseEntity<List<Event>> getAllEvents(
             @RequestParam(name="name", required = false) String name,
             @RequestParam(name="location", required = false) String location
     ){
