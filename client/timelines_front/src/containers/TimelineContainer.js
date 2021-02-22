@@ -104,7 +104,7 @@ useEffect(()=>{
 return (
     <>
         <div id="mainComponentCont">
-        <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
+        <EventForm locations={locations} events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
         <LocationForm locations={locations} locationDetails={addLocationDetails} setLocations={setLocations}/>
         <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
         </div>

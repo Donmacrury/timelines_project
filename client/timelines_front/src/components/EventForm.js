@@ -35,6 +35,16 @@ const [location, setLocation] = useState({id:3});
       setLocation(e.target.value)
     }
 
+    const locationNodes = locations.map((location) => {
+      if (location) {
+        return (
+        <option value={location.id}>
+          {location.name}
+        </option>
+        )
+      }
+    });
+
     return (
         <form onSubmit={handleEventSubmit}>
         <label>
@@ -47,8 +57,8 @@ const [location, setLocation] = useState({id:3});
         </label>
         <label>
           Location:
-          <select name="locations" value={locations} onSelect={handleLocationSelect}>
-          </select>
+          <select onChange={handleLocationSelect}>
+          {locationNodes}</select>
         </label>
         <input type="submit" value="Submit" />
       </form>
