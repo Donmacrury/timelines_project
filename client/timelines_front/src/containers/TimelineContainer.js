@@ -13,6 +13,15 @@ const [persons, setPersons] = useState([]);
 const [locations, setLocations] = useState([]);
 const [eventDetails, setEventDetails] = useState(null);
 
+const fetchEvents = () => {
+    const eventURL = `http://localhost:8080/events`;
+    fetch(eventURL)
+    .then((res) => res.json())
+    .then((data) => {
+      setEvents(data)  
+    })
+}
+
 
 const fetchPersons = () => {
     const personURL = `http://localhost:8080/persons`;
