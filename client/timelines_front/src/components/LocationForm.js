@@ -3,8 +3,8 @@ import {useState, useEffect} from "react";
 const LocationForm = ({locations, locationDetails}) => {
 
 const [name, setName] = useState("");
-const [latitude, setLatitude] = useState("");
-const [longitude, setLongitude] = useState("");
+const [latitude, setLatitude] = useState(0.00);
+const [longitude, setLongitude] = useState(0.00);
 const [description, setDescription] = useState("")
 
 const handleLocationSubmit = (e)=> {
