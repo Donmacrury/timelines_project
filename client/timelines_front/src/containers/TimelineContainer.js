@@ -2,7 +2,7 @@ import MapComponent from "../components/MapComponent";
 import {useEffect, useState} from "react";
 import "./TimeLineContainer.css";
 import EventForm from "../components/EventForm";
-import Dropdown from "./Dropdown";
+// import Dropdown from "./Dropdown";
 
 
 const TimelineContainer = () => {
@@ -107,7 +107,7 @@ return (
 <>
     <div id="mainComponentCont">
     <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
-    <Dropdown locations={locations} locationDetails={addLocationDetails}/>
+    {/* <Dropdown locations={locations} locationDetails={addLocationDetails}/> */}
     <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
 
     </div>
