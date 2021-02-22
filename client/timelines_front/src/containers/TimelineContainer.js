@@ -2,6 +2,8 @@ import MapComponent from "../components/MapComponent";
 import {useEffect, useState} from "react";
 import "./TimeLineContainer.css";
 import EventForm from "../components/EventForm";
+import Dropdown from "./Dropdown";
+
 
 const TimelineContainer = () => {
 
@@ -69,13 +71,27 @@ const fetchLocations = () => {
     .then((data)=>{
         setEvents([...events, data])
     })
-
-
     .catch((error) => console.log(error))
 
 };
 
-    // console.log(addEventDetails(events))
+const addLocationDetails = (data)=>{ 
+     
+    return fetch(`http://localhost:8080/locations/`, {
+       method: 'POST',
+       body: JSON.stringify(data),
+       headers: {
+           'Content-Type': 'application/json'
+       }
+   })
+   .then(res => res.json())
+   .then((data)=>{
+       setLocations([...locations, data])
+   })
+   .catch((error) => console.log(error))
+
+};
+
     
 
 useEffect(()=>{
@@ -91,6 +107,7 @@ return (
 <>
     <div id="mainComponentCont">
     <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
+    <Dropdown locations={locations} locationDetails={addLocationDetails}/>
     <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
 
     </div>
