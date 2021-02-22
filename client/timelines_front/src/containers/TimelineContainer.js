@@ -105,7 +105,6 @@ return (
     <>
         <div id="mainComponentCont">
         <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
-        {/* <Dropdown locations={locations} locationDetails={addLocationDetails}/> */}
         <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
 
         </div>

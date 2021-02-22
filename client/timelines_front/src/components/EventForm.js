@@ -1,11 +1,11 @@
 import {useState, useEffect} from "react";
-// import Dropdown from "./Dropdown"
+import Dropdown from "./Dropdown"
 
 const EventForm = ({events, eventDetails }) =>{
 
 const [name, setName] = useState("");
 const [date, setDate] = useState("");
-const [location, setLocation] = useState({id: 3});
+const [location, setLocation] = useState({});
 
 
     const handleEventSubmit = (e) => {
@@ -47,9 +47,8 @@ const [location, setLocation] = useState({id: 3});
           <input name="newEvent" type="text"  value={date} onChange={handleDateChange} />
         </label>
         <pre>
-        {/* <Dropdown options={location} onChange={handleLocationSelect} value={defaultOption} placeholder="Select an option" /> */}
-              
-            </pre>
+        <Dropdown options={location} onChange={handleLocationSelect} value={location} placeholder="Select an option" />
+        </pre>
         <input type="submit" value="Submit" />
       </form>
     )
