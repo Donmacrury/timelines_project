@@ -1,13 +1,20 @@
+import {addEventDetails} from '../containers/TimelineContainer';
 
 
-const Event = ({event}) => {
+const Event = ({event, viewEventDetails}) => {
+
+
+    const getEventID = () => {
+        viewEventDetails(event.id)  
+    }
+   
 
     return (
         <>
-        <p>{event.location.name}</p>
-        <p>{event.description}</p>
-        <p>{event.date}</p>
-        <button onClick>Click Here</button>
+        <p>{event.location.name} ({event.date})</p>
+        <p>{event.location.latitude}, {event.location.longitude}</p>
+        <button onClick={getEventID}>More Details</button>
+    
         </>
     
     )
