@@ -1,6 +1,7 @@
 import MapComponent from "../components/MapComponent";
 import {useEffect, useState} from "react";
 import "./TimeLineContainer.css";
+import EventContainer from "../components/EventContainer";
 import EventForm from "../components/EventForm";
 // import Dropdown from "./Dropdown";
 
@@ -13,21 +14,12 @@ const [locations, setLocations] = useState([]);
 const [eventDetails, setEventDetails] = useState(null);
 
 
-const fetchEvents = () => {
-
-    const eventURL = `http://localhost:8080/events`;
-    fetch(eventURL)
-    .then((res)=>res.json())
-    .then((data)=> {
-        setEvents(data)
-    })
-}
-
 const fetchPersons = () => {
     const personURL = `http://localhost:8080/persons`;
     fetch(personURL)
     .then((res)=>res.json())
     .then((data)=> {
+        
         setPersons(data)
     })
 }
@@ -100,20 +92,17 @@ useEffect(()=>{
     fetchLocations();
 }, [])
 
-
-
-
 return (
-<>
-    <div id="mainComponentCont">
-    <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
-    {/* <Dropdown locations={locations} locationDetails={addLocationDetails}/> */}
-    <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
+    <>
+        <div id="mainComponentCont">
+        <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
+        {/* <Dropdown locations={locations} locationDetails={addLocationDetails}/> */}
+        <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
 
-    </div>
-</>
+        </div>
+    </>
 
-)
+    )
 
 }
 

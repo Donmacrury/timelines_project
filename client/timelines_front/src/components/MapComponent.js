@@ -3,7 +3,7 @@ import EventDetails from './EventDetails';
 import Event from "./Event";
 import Location from "./Location";
 import "../containers/TimeLineContainer.css";
-import Person from "./Person";
+import Person from "./Person/Person";
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 
@@ -46,7 +46,7 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
 
 
         return (
-            // <>
+            <>
             <div>
             <MapContainer id = 'mapid' center={currentLocation} zoom={zoom} scrollWheelZoom={false}>
             <TileLayer
@@ -58,20 +58,21 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
             {renderEventDetails()}
             </div>
 
-            /* <section>
+            <section>
 
                 <div className="eventGrid">
                     {eventNodes}
                 </div>
                 <div className="locationGrid">
                     {locationNodes}
-              </div>
+                </div>
                 <div className="personsGrid">
-                    {personNodes}
+                    {personNodes} 
                 </div>
                 
             </section>
-            </> */
+             
+            </>
         )
 
  }
