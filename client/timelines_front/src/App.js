@@ -7,9 +7,21 @@ import EventContainer from './components/EventContainer';
 function App() {
   return (
     <>
+    
+    {/* 
+    <Router>
+    <NavBar/>
+    <Switch>
+    <Route path="/timeline" exact render={()=> <TimelinePage>}>
+    </Switch>
+    </Router>
+    */}
+    
     <div className="pageContainer">Historical Timelines</div>
-    {/* <TimelineContainer/> */}
+    
     <EventContainer />
+    <TimelineContainer/>
+    
     </>
   );
 }

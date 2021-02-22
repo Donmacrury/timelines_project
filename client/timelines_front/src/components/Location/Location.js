@@ -4,6 +4,7 @@ const Location = ({location}) => {
         <div>
         <>
             <p>{location.name}</p>
+            <p>{location.description}</p>
         
         </>
         </div>

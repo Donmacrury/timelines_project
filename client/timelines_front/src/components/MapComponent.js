@@ -1,58 +1,77 @@
-import Event from "./Event/Event";
-import Location from "./Location/Location";
+import {useState, useEffect} from "react";
+import EventDetails from './EventDetails';
+import Event from "./Event";
+import Location from "./Location";
 import "../containers/TimeLineContainer.css";
 import Person from "./Person/Person";
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
 
-const MapComponent = ({viewEventDetails, mapEvents, eventDetails}) => {
+const MapComponent = ({events, locations, persons, viewEventDetails, eventDetails}) => {
 
-    // if (!events || !locations || !persons){
-    //     return <span>SOMETHING AINT RIGHT</span>;
-    // }
+    const [currentLocation, setCurrentLocation] = useState({ lat: 53.4084, lng: -2.9916 });
+    const [zoom, setZoom] = useState(5);
+    const markerIcon = L.icon({  
+        iconUrl: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Muskets.svg/1488px-Muskets.svg.png", 
+        iconSize: [32, 32] 
+      });
 
-    
-        // TODO: get working coordinates for each event
-        const handleEventCoordinates = () => {
-            // work out which form o fhte events list we need
-            //  to then grab the relevant location data
-            // const centerCoords = eventNodes[0]
+    if (!events || !locations || !persons){
+        return <span>SOMETHING AINT RIGHT</span>;
+    }
 
-            //get this events location
+        const eventMarker = events.map((currentEvent, index)=>{
+            return (
+                <Marker key={index} position={[currentEvent.location.latitude, currentEvent.location.longitude]} icon={markerIcon} >
+                <Popup>
+                    <Event
+                    event={currentEvent}
+                    viewEventDetails={viewEventDetails}
+                /> 
+                </Popup>
+              </Marker>
+            )
+        })
+
+
+        const renderEventDetails = () => {
+            if ( eventDetails ){
+                return (<EventDetails eventDetails={eventDetails}/>)
+                
+            } 
+            return null;
         }
 
-        // TODO: a hook for events
-        // useEffect(()=>{handleEventCoordinates()},[events])
 
-        // TODO: handle date for each individual event
+
 
         return (
             <>
-            <MapContainer id = 'mapid'center={[54.4, -3.8]} zoom={5.2} scrollWheelZoom={false}>
+            <div>
+            <MapContainer id = 'mapid' center={currentLocation} zoom={zoom} scrollWheelZoom={false}>
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            <Marker position={[51.505, -0.09]}>
-                <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
-                </Popup>
-            </Marker>
+            {eventMarker}
             </MapContainer>
-            {/* <section> */}
-                
-        
-                {/* <div className="eventGrid">
+            {renderEventDetails()}
+            </div>
+
+            <section>
+
+                <div className="eventGrid">
                     {eventNodes}
                 </div>
                 <div className="locationGrid">
                     {locationNodes}
                 </div>
                 <div className="personsGrid">
-                    {personNodes} */}
-                {/* </div>
+                    {personNodes} 
+                </div>
                 
-            </section> */}
+            </section>
+             
             </>
         )
 
