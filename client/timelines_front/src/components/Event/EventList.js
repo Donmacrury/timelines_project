@@ -1,4 +1,4 @@
-import Event from "./EventObject";
+import Event from "./FilteredEvent";
 
 const Eventlist = ({filteredEvents}) => {
 
@@ -9,7 +9,7 @@ const Eventlist = ({filteredEvents}) => {
         const eventNodes = filteredEvents.map((object, index) => {
             return (
                 <>
-                <h3>Below should be the individual event object!</h3>
+                
 
                     <li> <Event filteredEvent={object} key={index}/>
                     </li>
