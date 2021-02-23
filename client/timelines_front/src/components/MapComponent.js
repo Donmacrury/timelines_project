@@ -46,13 +46,16 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
         return (
             <>
             <div>
-            <MapContainer id = 'mapid' center={currentLocation} zoom={zoom} scrollWheelZoom={false}>
+            <MapContainer id = 'mapid' center={currentLocation} zoom={zoom} scrollWheelZoom={false} >
             <TileLayer
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
+             {/* <div className="ui raised very padded text container segment"> */}
             {eventMarker}
+            {/* </div> */}
             </MapContainer>
+           
             {renderEventDetails()}
             </div>
              

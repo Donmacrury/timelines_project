@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import LocationForm from "./LocationForm";
+import { Input } from 'semantic-ui-react';
 
 const EventForm = ({events, eventDetails, locations}) =>{
 
@@ -49,18 +50,18 @@ const [location, setLocation] = useState("");
         <form onSubmit={handleEventSubmit}>
         <label>
           Name:
-          <input name="newEvent" type="text" value={name} onChange={handleNameChange} />
+          <Input size='small' name="newEvent" type="text" value={name} onChange={handleNameChange} />
         </label>
         <label>
           Date:
-          <input name="newEvent" type="text"  value={date} onChange={handleDateChange} />
+          <Input size='small' name="newEvent" type="text"  value={date} onChange={handleDateChange} />
         </label>
         <label>
           Location:
           <select onChange={handleLocationSelect}>
           {locationNodes}</select>
         </label>
-        <input type="submit" value="Submit" />
+        <Input type="submit" value="Submit" />
       </form>
     )
 };

@@ -1,3 +1,4 @@
+import { List, Segment }from 'semantic-ui-react';
 import Event from "./FilteredEvent";
 
 const Eventlist = ({filteredEvents, deleteEntry}) => {
@@ -10,9 +11,10 @@ const Eventlist = ({filteredEvents, deleteEntry}) => {
             return (
                 <>
                 
-
-                    <li> <Event filteredEvent={object} key={index} deleteEntry={deleteEntry}/>
-                    </li>
+                    <Segment>
+                        <List.Item> <Event filteredEvent={object} key={index} deleteEntry={deleteEntry}/>
+                        </List.Item>
+                    </Segment>
 
                 </>
                 

@@ -42,12 +42,12 @@ const EventContainer = () => {
     
 return (
     <>
-        <h2>Search for an event</h2>
+        
         <FilterSearch onUserInput={handleUserFilter}/>
         <br/>
         <br/>
         <EventList filteredEvents = {eventFilter} deleteEntry={deleteEventEntry}/> 
-        
+    
     </>
 )
 

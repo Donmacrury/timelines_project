@@ -1,3 +1,4 @@
+
 const EventDetails = ({eventDetails, events}) => {
 
     const handleEventPersons = eventDetails.persons.map((currentPerson, index) => {
@@ -9,11 +10,13 @@ const EventDetails = ({eventDetails, events}) => {
         <div>
             <h2>{eventDetails.name}</h2>
             <p>{eventDetails.description}</p>
-            <h3>Partcipants</h3>
-            <ul>
-            {handleEventPersons}
-            </ul>
-        </div>
+                <h3>Participants</h3>
+                    <ul>
+                
+                    {handleEventPersons}
+                    
+                    </ul>
+         </div>
     )
 
 

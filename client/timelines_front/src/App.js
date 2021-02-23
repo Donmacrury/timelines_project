@@ -21,11 +21,11 @@ function App() {
     */}
     
     <div className="pageContainer">
-    <PokedexHeader name={"Don, Fras and Al"}/></div>
+    <PokedexHeader name={"Don, Fras and Al!"}/>
     <TimelineContainer/>
     
     <EventContainer />
-    
+    </div>
     </>
   );
 }

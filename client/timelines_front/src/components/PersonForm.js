@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-
+import { Input, Select } from 'semantic-ui-react';
 
 const PersonForm  = ({persons, events, personDetails}) => {
 
@@ -62,22 +62,22 @@ const [personEvents, setPersonEvents] = useState([]);
 
         <label>
           Name:
-          <input name="newPerson" type="text" value={name} onChange={handleNameChange} />
+          <Input size='small' name="newPerson" type="text" value={name} onChange={handleNameChange} />
         </label>
 
         <label>
           Nationality:
-          <input name="newPerson" type="text"  value={nationality} onChange={handleNationalityChange} />
+          <Input size='small' name="newPerson" type="text"  value={nationality} onChange={handleNationalityChange} />
         </label>
 
         <label>
           BirthDate:
-          <input name="newPerson" type="text"  value={birthDate} onChange={handleBirthDateChange} />
+          <Input size='small' name="newPerson" type="text"  value={birthDate} onChange={handleBirthDateChange} />
         </label>
 
         <label>
           DeathDate:
-          <input name="newPerson" type="text"  value={deathDate} onChange={handleDeathDateChange} />
+          <Input size='small' name="newPerson" type="text"  value={deathDate} onChange={handleDeathDateChange} />
         </label>
 
         <label>
@@ -86,7 +86,7 @@ const [personEvents, setPersonEvents] = useState([]);
             {eventNodes}</select>
         </label>
 
-        <input type="submit" value="Submit" />
+        <Input type="submit" value="Submit" />
       </form>
     )
 

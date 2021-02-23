@@ -1,3 +1,4 @@
+import { Button } from 'semantic-ui-react';
 import {addEventDetails} from '../containers/TimelineContainer';
 
 
@@ -13,7 +14,7 @@ const Event = ({event, viewEventDetails}) => {
         <>
         <p>{event.location.name} ({event.date})</p>
         <p>{event.location.latitude}, {event.location.longitude}</p>
-        <button onClick={getEventID}>More Details</button>
+        <Button color='instagram' onClick={getEventID}>More Details</Button>
     
         </>
     

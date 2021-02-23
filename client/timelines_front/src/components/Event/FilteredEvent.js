@@ -1,5 +1,5 @@
 
-
+import { List, Button } from 'semantic-ui-react'
 const Event = ({filteredEvent, deleteEntry}) => {
 
     const deleteButton = () => {
@@ -8,9 +8,17 @@ const Event = ({filteredEvent, deleteEntry}) => {
 
     return (
         <div>
-            <p>{filteredEvent.name}</p>
-            <p>{filteredEvent.description}</p>
-            <p>{filteredEvent.date}</p><button onClick={deleteButton}>Delete Event</button>
+        <List.Icon name='chess knight' />
+        <List.Content>
+            <List.Header as='h3'>{filteredEvent.name}</List.Header>
+            <List.Content floated="right">{filteredEvent.date}</List.Content>
+            <List.Description>
+            {filteredEvent.description}
+            </List.Description>
+            <Button secondary onClick={deleteButton}>Delete Event</Button>
+        </List.Content>
+
+        
         </div>
         
     
