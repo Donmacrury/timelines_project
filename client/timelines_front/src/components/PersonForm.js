@@ -16,7 +16,8 @@ const [personEvents, setPersonEvents] = useState([]);
       name: name,
       nationality: nationality,
       birthDate: birthDate,
-      deathDate: deathDate
+      deathDate: deathDate,
+      events: [{id: personEvents}]
     }
 
       personDetails(personObject)
@@ -44,7 +45,7 @@ const [personEvents, setPersonEvents] = useState([]);
     const eventNodes = events.map((event) => {
       if (event) {
         return (
-            <option value={event}>
+            <option value={event.id}>
              {event.name}
             </option>
         )
@@ -80,7 +81,7 @@ const [personEvents, setPersonEvents] = useState([]);
 
         <label>
             Events:
-            <select onChange={handleEventsChange} value={events} >
+            <select onChange={handleEventsChange} value={personEvents} >
             {eventNodes}</select>
         </label>
 
