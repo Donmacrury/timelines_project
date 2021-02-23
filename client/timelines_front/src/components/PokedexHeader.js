@@ -1,6 +1,7 @@
 import React from 'react';
 
 const PokedexHeader = ({name}) => {
+  
     return (
         <div>
       <h1>Historical Timelines with  </h1>

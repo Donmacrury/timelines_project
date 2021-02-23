@@ -7,7 +7,6 @@ import './semantic/dist/semantic.css';
 import PokedexHeader from "./components/PokedexHeader";
 
 
-
 function App() {
   return (
     <>
