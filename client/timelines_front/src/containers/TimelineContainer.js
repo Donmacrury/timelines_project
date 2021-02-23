@@ -4,6 +4,7 @@ import "./TimeLineContainer.css";
 import EventContainer from "../components/EventContainer";
 import EventForm from "../components/EventForm";
 import LocationForm from "../components/LocationForm";
+import PersonForm from "../components/PersonForm";
 import { Container, Header, Grid, Segment} from 'semantic-ui-react'
 
 
@@ -57,8 +58,8 @@ const fetchLocations = () => {
         console.log(data)
         setEventDetails(data)
     })
-    
-}
+ }
+
 
  const addEventDetails = (data)=>{ 
      
@@ -74,6 +75,23 @@ const fetchLocations = () => {
         setEvents([...events, data])
     })
     .catch((error) => console.log(error))
+
+};
+
+const addPersonDetails = (data)=>{ 
+     
+    return fetch(`http://localhost:8080/persons/`, {
+       method: 'POST',
+       body: JSON.stringify(data),
+       headers: {
+           'Content-Type': 'application/json'
+       }
+   })
+   .then(res => res.json())
+   .then((data)=>{
+       setPersons([...persons, data])
+   })
+   .catch((error) => console.log(error))
 
 };
 
@@ -123,6 +141,9 @@ return (
                                 </Segment>
                                 <Segment>
                                     <LocationForm locations={locations} locationDetails={addLocationDetails} setLocations={setLocations}/>
+                                </Segment>
+                                <Segment>
+                                    <PersonForm persons={persons} events={events} personDetails={addPersonDetails} />
                                 </Segment>
                                 
                             </Segment.Group>
