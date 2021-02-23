@@ -5,7 +5,7 @@ const EventForm = ({events, eventDetails, locations}) =>{
 
 const [name, setName] = useState("");
 const [date, setDate] = useState("");
-const [location, setLocation] = useState({id:3});
+const [location, setLocation] = useState("");
 
     const handleEventSubmit = (e) => {
         e.preventDefault();
@@ -13,7 +13,7 @@ const [location, setLocation] = useState({id:3});
     const eventObject = {
       name: name,
       date: date,
-      location: location
+      location: {id: location}
     }
 
       eventDetails(eventObject)

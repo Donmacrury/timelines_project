@@ -34,7 +34,7 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
 
         const renderEventDetails = () => {
             if ( eventDetails ){
-                return (<EventDetails eventDetails={eventDetails}/>)
+                return (<EventDetails eventDetails={eventDetails} events={events}/>)
                 
             } 
             return null;

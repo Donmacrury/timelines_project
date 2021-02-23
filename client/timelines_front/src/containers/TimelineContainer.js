@@ -4,6 +4,8 @@ import "./TimeLineContainer.css";
 import EventContainer from "../components/EventContainer";
 import EventForm from "../components/EventForm";
 import LocationForm from "../components/LocationForm";
+import PersonForm from "../components/PersonForm";
+import { Container, Header, Grid, Segment} from 'semantic-ui-react'
 
 
 const TimelineContainer = () => {
@@ -56,8 +58,8 @@ const fetchLocations = () => {
         console.log(data)
         setEventDetails(data)
     })
-    
-}
+ }
+
 
  const addEventDetails = (data)=>{ 
      
@@ -73,6 +75,23 @@ const fetchLocations = () => {
         setEvents([...events, data])
     })
     .catch((error) => console.log(error))
+
+};
+
+const addPersonDetails = (data)=>{ 
+     
+    return fetch(`http://localhost:8080/persons/`, {
+       method: 'POST',
+       body: JSON.stringify(data),
+       headers: {
+           'Content-Type': 'application/json'
+       }
+   })
+   .then(res => res.json())
+   .then((data)=>{
+       setPersons([...persons, data])
+   })
+   .catch((error) => console.log(error))
 
 };
 
@@ -93,8 +112,6 @@ const addLocationDetails = (data)=>{
 
 };
 
-    
-
 useEffect(()=>{
     fetchEvents();
     fetchPersons();
@@ -104,9 +121,42 @@ useEffect(()=>{
 return (
     <>
         <div id="mainComponentCont">
-        <EventForm locations={locations} events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
-        <LocationForm locations={locations} locationDetails={addLocationDetails} setLocations={setLocations}/>
-        <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
+            <Container style={{ padding: '5em 0em' }}>
+                <Grid columns={1}>
+                    <Grid.Column>
+
+                        {/* <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/> */}
+                        {/* <Dropdown locations={locations} locationDetails={addLocationDetails}/> */}
+
+                        <Segment.Group>
+
+                        <Segment>
+                        <Header as='h2'>Historical Timeline</Header>
+                        </Segment>
+
+                            <Segment.Group>
+
+                                <Segment>
+                                    <EventForm locations={locations} events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
+                                </Segment>
+                                <Segment>
+                                    <LocationForm locations={locations} locationDetails={addLocationDetails} setLocations={setLocations}/>
+                                </Segment>
+                                <Segment>
+                                    <PersonForm persons={persons} events={events} personDetails={addPersonDetails} />
+                                </Segment>
+                                
+                            </Segment.Group>
+                            <Segment>
+                                <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
+                            </Segment>
+                            
+                        </Segment.Group>
+
+                    </Grid.Column>
+                </Grid>
+            </Container>
+
         </div>
     </>
 
