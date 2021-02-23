@@ -27,6 +27,13 @@ const EventContainer = () => {
         setEventFilter(timelineDetails); 
         }
 
+    const deleteEventEntry = (userId) => {
+        return fetch(`http://localhost:8080/events/${userId}`, {
+            method: "DELETE"
+        })
+    setEvents(events.filter(event => event.id !== userId));
+    }
+
 
     useEffect(()=>{
         fetchEvents();
@@ -38,7 +45,7 @@ return (
         <h2>Below should be the filter search bar!</h2>
         <FilterSearch onUserInput={handleUserFilter}/>
         <h2>Below should be event list!</h2>
-        <EventList filteredEvents = {eventFilter}/> 
+        <EventList filteredEvents = {eventFilter} deleteEntry={deleteEventEntry}/> 
         
     </>
 )

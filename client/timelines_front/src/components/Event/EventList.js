@@ -1,6 +1,6 @@
 import Event from "./FilteredEvent";
 
-const Eventlist = ({filteredEvents}) => {
+const Eventlist = ({filteredEvents, deleteEntry}) => {
 
     if (!filteredEvents){
         return <span>SOMETHING AINT RIGHT</span>;
@@ -11,7 +11,7 @@ const Eventlist = ({filteredEvents}) => {
                 <>
                 
 
-                    <li> <Event filteredEvent={object} key={index}/>
+                    <li> <Event filteredEvent={object} key={index} deleteEntry={deleteEntry}/>
                     </li>
 
                 </>
