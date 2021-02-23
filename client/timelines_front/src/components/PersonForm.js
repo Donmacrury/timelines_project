@@ -54,6 +54,7 @@ const [personEvents, setPersonEvents] = useState([]);
 
     const handleEventsChange = (e) => {
         setPersonEvents(e.target.value)
+        
       }
 
     return (
