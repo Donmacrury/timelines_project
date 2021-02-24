@@ -1,11 +1,13 @@
 import {useState, useEffect} from "react";
 import LocationForm from "./LocationForm";
+import { Input } from 'semantic-ui-react';
 
 const EventForm = ({events, eventDetails, locations}) =>{
 
 const [name, setName] = useState("");
 const [date, setDate] = useState("");
 const [location, setLocation] = useState("");
+const [description, setDescription] = useState("");
 
     const handleEventSubmit = (e) => {
         e.preventDefault();
@@ -13,6 +15,7 @@ const [location, setLocation] = useState("");
     const eventObject = {
       name: name,
       date: date,
+      description: description,
       location: {id: location}
     }
 
@@ -35,6 +38,10 @@ const [location, setLocation] = useState("");
       setLocation(e.target.value)
     }
 
+    const handleDescriptionChange = (e) => {
+      setDescription(e.target.value)
+    }
+
     const locationNodes = locations.map((location) => {
       if (location) {
         return (
@@ -49,18 +56,22 @@ const [location, setLocation] = useState("");
         <form onSubmit={handleEventSubmit}>
         <label>
           Name:
-          <input name="newEvent" type="text" value={name} onChange={handleNameChange} />
+          <Input size='small' name="newEvent" type="text" value={name} onChange={handleNameChange} />
         </label>
         <label>
           Date:
-          <input name="newEvent" type="text"  value={date} onChange={handleDateChange} />
+          <Input size='small' name="newEvent" type="text"  value={date} onChange={handleDateChange} />
         </label>
         <label>
-          Location:
+          Description:
+          <Input size='small' name="newEvent" type="text"  value={description} onChange={handleDescriptionChange}/>
+        </label>
+        <label>
+          Location: 
           <select onChange={handleLocationSelect}>
           {locationNodes}</select>
         </label>
-        <input type="submit" value="Submit" />
+        <Input type="submit" value="Submit" />
       </form>
     )
 };

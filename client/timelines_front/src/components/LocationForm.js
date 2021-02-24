@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react";
+import { Input, Select } from 'semantic-ui-react';
 
 const LocationForm = ({locations, locationDetails}) => {
 
@@ -42,21 +43,21 @@ const handleDescriptionChange = (e) => {
         <form onSubmit={handleLocationSubmit}>
         <label>
           Name:
-          <input name="name" type="text" value={name} onChange={handleNameChange} />
+          <Input size='small' name="name" type="text" value={name} onChange={handleNameChange} />
         </label>
         <label>
           Latitude:
-          <input name="latitude" type="text"  value={latitude} onChange={handleLatitudeChange} />
+          <Input size='small' name="latitude" type="text"  value={latitude} onChange={handleLatitudeChange} />
         </label>
         <label>
             Logitude:
-            <input name="longitude" type="text" value={longitude} onChange={handleLongitudeChange}/>
+            <Input size='small' name="longitude" type="text" value={longitude} onChange={handleLongitudeChange}/>
         </label>
         <label>
             Description:
-            <input name="description" type="text" value={description} onChange={handleDescriptionChange}/>
+            <Input size='small' name="description" type="text" value={description} onChange={handleDescriptionChange}/>
         </label>
-        <input type="submit" value="Submit" />
+        <Input size='small' type="submit" value="Submit" />
       </form>
     )
 

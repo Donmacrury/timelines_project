@@ -1,12 +1,14 @@
+import { Segment } from 'semantic-ui-react';
 import React from 'react';
 
 const PokedexHeader = ({name}) => {
   
     return (
-        <div>
-      <h1>Historical Timelines with  </h1>
-      <h2> {name} </h2>
-        </div>
+        <Segment basic inverted padded='very'>
+          <h1 className="ui massive center aligned header">Historical Timelines </h1>
+          <h3 className="ui center aligned header"> with {name} </h3>
+        </Segment>
+        
     )
 } 
 
