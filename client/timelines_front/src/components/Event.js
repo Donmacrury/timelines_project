@@ -12,8 +12,10 @@ const Event = ({event, viewEventDetails}) => {
 
     return (
         <>
-        <p>{event.location.name} ({event.date})</p>
-        <p>{event.location.latitude}, {event.location.longitude}</p>
+        <p>Location: {event.location.name}</p> 
+        <p>Date: {event.date}</p>
+        <p>Latitude ({event.location.latitude})</p>
+        <p> Longitude ({event.location.longitude})</p>
         <Button color='instagram' onClick={getEventID}>More Details</Button>
     
         </>

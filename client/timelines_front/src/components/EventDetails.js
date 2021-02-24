@@ -8,7 +8,7 @@ const EventDetails = ({eventDetails, events}) => {
 
     return (
         <div>
-            <h2>{eventDetails.name}</h2>
+            <h3>{eventDetails.name}</h3>
             <p>{eventDetails.description}</p>
                 <h3>Participants</h3>
                     <ul>

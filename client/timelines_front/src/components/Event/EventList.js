@@ -1,4 +1,4 @@
-import { List, Segment }from 'semantic-ui-react';
+import { List, Segment, Grid }from 'semantic-ui-react';
 import Event from "./FilteredEvent";
 
 const Eventlist = ({filteredEvents, deleteEntry}) => {
@@ -10,11 +10,12 @@ const Eventlist = ({filteredEvents, deleteEntry}) => {
         const eventNodes = filteredEvents.map((object, index) => {
             return (
                 <>
-                
-                    <Segment>
-                        <List.Item> <Event filteredEvent={object} key={index} deleteEntry={deleteEntry}/>
-                        </List.Item>
-                    </Segment>
+                    {/* <Grid.Column> */}
+                        
+                    <Event filteredEvent={object} key={index} deleteEntry={deleteEntry}/>
+                    {/* </List.Item> */}
+                        
+                    {/* </Grid.Column> */}
 
                 </>
                 

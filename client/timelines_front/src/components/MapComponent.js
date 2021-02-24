@@ -4,6 +4,7 @@ import Event from "./Event";
 import "../containers/TimeLineContainer.css";
 import L from 'leaflet';
 import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
+import {Segment, Header, Grid} from 'semantic-ui-react';
 
 const MapComponent = ({events, locations, persons, viewEventDetails, eventDetails}) => {
 
@@ -34,14 +35,17 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
 
         const renderEventDetails = () => {
             if ( eventDetails ){
-                return (<EventDetails eventDetails={eventDetails} events={events}/>)
+                return (
+
+                <Segment>
+                    <EventDetails eventDetails={eventDetails} events={events}/>
+                </Segment>
+                
+                )
                 
             } 
             return null;
         }
-
-
-
 
         return (
             <>

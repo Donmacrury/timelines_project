@@ -121,51 +121,55 @@ useEffect(()=>{
 return (
     <>
         <div id="mainComponentCont">
-            <Container text style={{ padding: '3rem 0rem' }}>
+            <Container style={{ padding: '3rem 0rem' }}>
+            {/* <Segment> */}
+                <Container text>
                 <Segment.Group>
                     <Segment raised>
                         <Header as='h2'>Enter some historical details</Header>
                     </Segment>
                     <Segment raised>
-                        <Grid>
+                        <Grid divided>
                             
                         <Grid.Row columns={3}>
                             <Grid.Column>
                                     {/* <Segment.Group horizontal raised> */}
-                                    <div className="ui padded segment">
+                                    {/* <div className="ui padded segment"> */}
                                         {/* <Segment raised textAlign='left' floated='left'> */}
                                             <Header as='h3'>New Location</Header>
                                             <LocationForm locations={locations} locationDetails={addLocationDetails} setLocations={setLocations}/>
                                         {/* </Segment> */}
-                                    </div>
+                                    {/* </div> */}
                             </Grid.Column>
                             <Grid.Column>
-                                <div className="ui padded segment">
+                                {/* <div className="ui padded segment"> */}
                                     {/* <Segment raised textAlign='left' floated='left'> */}
                                     
                                         <Header as='h3'>New Event</Header>
                                         <EventForm locations={locations} events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
                                     {/* </Segment> */}
-                                </div>
+                                {/* </div> */}
                             </Grid.Column>
                             <Grid.Column>
-                                <div className="ui padded segment">
+                                {/* <div className="ui padded segment"> */}
                                     {/* <Segment raised textAlign='left' floated='left' padded> */}
                                         <Header as='h3'>New Participant</Header>
                                         <PersonForm persons={persons} events={events} personDetails={addPersonDetails} />
                                     {/* </Segment> */}
-                                </div>
+                                {/* </div> */}
                             </Grid.Column>
                         </Grid.Row>
                             {/* </Segment.Group> */}
                         </Grid>
                     </Segment>
                 </Segment.Group>
+                </Container>
+            {/* </Segment> */}
             </Container>
                     {/* <Segment.Group> */}
-                                {/* <Segment> */}
+                                <Segment>
                                     <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
-                                {/* </Segment> */}
+                                </Segment>
                     {/* </Segment.Group> */}
 
                         {/* </Grid.Column> */}
