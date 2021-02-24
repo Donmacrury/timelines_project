@@ -135,19 +135,25 @@ return (
                             </Segment>
 
                             <Segment.Group horizontal raised>
-
+                            <div className="ui padded segment">
                                 <Segment raised textAlign='left' floated='left'>
+                                
                                     <Header as='h3'>New Event</Header>
                                     <EventForm locations={locations} events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
                                 </Segment>
+                            </div>
+                            <div className="ui padded segment">
                                 <Segment raised>
                                     <Header as='h3'>New Location</Header>
                                     <LocationForm locations={locations} locationDetails={addLocationDetails} setLocations={setLocations}/>
                                 </Segment>
+                            </div>
+                            <div className="ui padded segment">
                                 <Segment raised>
                                     <Header as='h3'>New Character</Header>
                                     <PersonForm persons={persons} events={events} personDetails={addPersonDetails} />
                                 </Segment>
+                            </div>
                                 
                             </Segment.Group>
 

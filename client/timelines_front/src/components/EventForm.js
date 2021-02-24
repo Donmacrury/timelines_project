@@ -7,6 +7,7 @@ const EventForm = ({events, eventDetails, locations}) =>{
 const [name, setName] = useState("");
 const [date, setDate] = useState("");
 const [location, setLocation] = useState("");
+const [description, setDescription] = useState("");
 
     const handleEventSubmit = (e) => {
         e.preventDefault();
@@ -14,6 +15,7 @@ const [location, setLocation] = useState("");
     const eventObject = {
       name: name,
       date: date,
+      description: description,
       location: {id: location}
     }
 
@@ -34,6 +36,10 @@ const [location, setLocation] = useState("");
     
     const handleLocationSelect = (e) => {
       setLocation(e.target.value)
+    }
+
+    const handleDescriptionChange = (e) => {
+      setDescription(e.target.value)
     }
 
     const locationNodes = locations.map((location) => {
@@ -57,7 +63,11 @@ const [location, setLocation] = useState("");
           <Input size='small' name="newEvent" type="text"  value={date} onChange={handleDateChange} />
         </label>
         <label>
-          Location:
+          Description:
+          <Input size='small' name="newEvent" type="text"  value={description} onChange={handleDescriptionChange}/>
+        </label>
+        <label>
+          Location: 
           <select onChange={handleLocationSelect}>
           {locationNodes}</select>
         </label>
