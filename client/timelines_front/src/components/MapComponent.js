@@ -47,7 +47,7 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
             <>
             <div>
             <MapContainer id = 'mapid' center={currentLocation} zoom={zoom} scrollWheelZoom={false}>
-                <LayersControl position="topright" >
+                <LayersControl position="topright">
                     <LayersControl.BaseLayer checked name="OpenStreetMap.Mapnik">
                         <TileLayer
                             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -62,12 +62,10 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
                             url="https://nls-{s}.tileserver.com/nls/{z}/{x}/{y}.jpg"
                         />
                     </LayersControl.BaseLayer>
-                    <LayersControl.OverLay checked name="markers">
+                    <LayersControl.Overlay checked name="markers">
                             {eventMarker}
-                    </LayersControl.OverLay>
-            
+                    </LayersControl.Overlay>
                 </LayersControl>
-
             </MapContainer>
             {renderEventDetails()}
             </div>
