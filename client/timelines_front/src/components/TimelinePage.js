@@ -1,13 +1,11 @@
-import {useEffect, useState} from 'react';
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
 
 
 const TimelinePage = ({events}) => {
     
-    // const [timelineEvents, setTimelineEvents] = useState([])
-
     // TODO styles for battle event and non-battle-evetn, can be done in TimelinePage.css
+  
 
     return (
         <>
@@ -16,10 +14,9 @@ const TimelinePage = ({events}) => {
                 // let isBattleIcon - event.type ===="work";
                 // conditional logic for hasPersonList to see if the event has a list of person to then
                 // make the list of people button show up
-
                 return(
                     <VerticalTimelineElement
-                        ket={event.key}
+                        key={event.id}
                         date={event.date}
                         dateClassName="date"
                         // iconStyle={isBattleIcon ? battleIconStyle : non-battleIconStyle}
@@ -31,8 +28,9 @@ const TimelinePage = ({events}) => {
                         <button>People</button> 
                         {/* this should have a popup for a list of people at the event */}
                     </VerticalTimelineElement>
-                );
-            })}
+                    );
+                })
+            }
             </VerticalTimeline>
         </>
     )
