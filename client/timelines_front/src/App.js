@@ -1,4 +1,6 @@
-
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import NavBar from "./components/NavigationBar";
+import TimelinePage from "./components/TimelinePage";
 import './App.css';
 import MapComponent from './components/MapComponent';
 import TimelineContainer from './containers/TimelineContainer';
@@ -10,15 +12,14 @@ import PokedexHeader from "./components/PokedexHeader";
 function App() {
   return (
     <>
-    
-    {/* 
+      
     <Router>
-    <NavBar/>
-    <Switch>
-    <Route path="/timeline" exact render={()=> <TimelinePage>}>
-    </Switch>
+      <NavBar/>
+        <Switch>
+          <Route path="/timeline" exact render={()=> <TimelinePage/>}/>
+        </Switch>
     </Router>
-    */}
+   
     
     <div className="pageContainer">
     <PokedexHeader name={"Don, Fras and Al"}/></div>
