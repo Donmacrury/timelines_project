@@ -48,8 +48,10 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
             <div>
             <MapContainer id = 'mapid' center={currentLocation} zoom={zoom} scrollWheelZoom={false}>
             <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                attribution='Historical Maps Layer, 1919-1947 from the <a href="http://maps.nls.uk/projects/api">NLS Maps API</a> contributors' 
+                // opacity=0.85
+                subdomains='0123'
+                url="https://nls-{s}.tileserver.com/nls/{z}/{x}/{y}.jpg"
             />
             {eventMarker}
             </MapContainer>
