@@ -61,7 +61,7 @@ const [description, setDescription] = useState("");
         <label>
           Date:
           <Input size='small' name="newEvent" type="text"  value={date} onChange={handleDateChange} />
-        </label>
+        </label><br/>
         <label>
           Description:
           <Input size='small' name="newEvent" type="text"  value={description} onChange={handleDescriptionChange}/>
