@@ -3,7 +3,7 @@ import EventDetails from './EventDetails';
 import Event from "./Event";
 import "../containers/TimeLineContainer.css";
 import L from 'leaflet';
-import { MapContainer, TileLayer, Marker, Popup} from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup, LayersControl} from 'react-leaflet';
 
 const MapComponent = ({events, locations, persons, viewEventDetails, eventDetails}) => {
 
@@ -46,14 +46,26 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
         return (
             <>
             <div>
-            <MapContainer id = 'mapid' center={currentLocation} zoom={zoom} scrollWheelZoom={false} >
-            <TileLayer
-                attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-             {/* <div className="ui raised very padded text container segment"> */}
-            {eventMarker}
-            {/* </div> */}
+            <MapContainer id = 'mapid' center={currentLocation} zoom={zoom} scrollWheelZoom={false}>
+                <LayersControl position="topright">
+                    <LayersControl.BaseLayer checked name="OpenStreetMap.Mapnik">
+                        <TileLayer
+                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                        />
+                    </LayersControl.BaseLayer>
+                    <LayersControl.BaseLayer checked name="Historical Maps Layer">
+                        <TileLayer
+                            attribution='Historical Maps Layer, 1919-1947 from the <a href="http://maps.nls.uk/projects/api">NLS Maps API</a> contributors' 
+                            // opacity=0.85
+                            subdomains='0123'
+                            url="https://nls-{s}.tileserver.com/nls/{z}/{x}/{y}.jpg"
+                        />
+                    </LayersControl.BaseLayer>
+                    <LayersControl.Overlay checked name="markers">
+                            {eventMarker}
+                    </LayersControl.Overlay>
+                </LayersControl>
             </MapContainer>
            
             {renderEventDetails()}
