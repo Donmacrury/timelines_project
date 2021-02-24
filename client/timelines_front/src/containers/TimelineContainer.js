@@ -1,3 +1,6 @@
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import NavBar from "../components/NavigationBar";
+import TimelinePage from "../components/TimelinePage";
 import MapComponent from "../components/MapComponent";
 import {useEffect, useState} from "react";
 import "./TimeLineContainer.css";
@@ -120,6 +123,13 @@ useEffect(()=>{
 
 return (
     <>
+    <Router>
+      <NavBar/>
+        <Switch>
+          <Route path="/timeline" exact render={()=> <TimelinePage events={events}/>}/>
+        </Switch>
+    </Router>
+
         <div id="mainComponentCont">
             <Container style={{ padding: '5em 0em' }}>
                 <Grid columns={1}>
