@@ -18,9 +18,7 @@ const [description, setDescription] = useState("");
       description: description,
       location: {id: location}
     }
-
       eventDetails(eventObject)
-         
        console.log(eventObject);
   }
 
