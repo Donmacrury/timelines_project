@@ -1,4 +1,4 @@
-
+import { Segment, Input} from 'semantic-ui-react';
 const FilterSearch = ({onUserInput}) => {
 
     // function to callwhenever we want this state of our events to change depending on user input matching object individual elements details
@@ -11,13 +11,12 @@ const FilterSearch = ({onUserInput}) => {
 
     return (
         <>
-        
-                <label> Search for event</label> 
-                <input type="text" 
-                placeholder="e.g. Battle of Culloden" 
+            <Segment >
+                <Input type="text" 
+                placeholder="Search event" 
                 onChange={handleFilterInput}/>
                 {/* <h6>{filteredEvents}</h6> */}
-
+            </Segment>
         </> 
 
     

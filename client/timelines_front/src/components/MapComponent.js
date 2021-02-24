@@ -67,6 +67,7 @@ const MapComponent = ({events, locations, persons, viewEventDetails, eventDetail
                     </LayersControl.Overlay>
                 </LayersControl>
             </MapContainer>
+           
             {renderEventDetails()}
             </div>
              

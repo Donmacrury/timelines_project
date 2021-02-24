@@ -1,3 +1,6 @@
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import NavBar from "../components/NavigationBar";
+import TimelinePage from "../components/TimelinePage";
 import MapComponent from "../components/MapComponent";
 import {useEffect, useState} from "react";
 import "./TimeLineContainer.css";
@@ -5,7 +8,7 @@ import EventContainer from "../components/EventContainer";
 import EventForm from "../components/EventForm";
 import LocationForm from "../components/LocationForm";
 import PersonForm from "../components/PersonForm";
-import { Container, Header, Grid, Segment} from 'semantic-ui-react'
+import { Container, Header, Grid, Segment, Input} from 'semantic-ui-react';
 
 
 const TimelineContainer = () => {
@@ -120,6 +123,13 @@ useEffect(()=>{
 
 return (
     <>
+    <Router>
+      <NavBar/>
+        <Switch>
+          <Route path="/timeline" exact render={()=> <TimelinePage events={events}/>}/>
+        </Switch>
+    </Router>
+
         <div id="mainComponentCont">
             <Container style={{ padding: '5em 0em' }}>
                 <Grid columns={1}>
@@ -128,25 +138,35 @@ return (
                         {/* <EventForm events={events} eventDetails={addEventDetails} setEvents={setEvents}/> */}
                         {/* <Dropdown locations={locations} locationDetails={addLocationDetails}/> */}
 
-                        <Segment.Group>
+                        <Segment.Group raised>
 
-                        <Segment>
-                        <Header as='h2'>Historical Timeline</Header>
-                        </Segment>
+                            <Segment raised>
+                            <Header as='h2'>Enter some historical details</Header>
+                            </Segment>
 
-                            <Segment.Group>
-
-                                <Segment>
+                            <Segment.Group horizontal raised>
+                            <div className="ui padded segment">
+                                <Segment raised textAlign='left' floated='left'>
+                                
+                                    <Header as='h3'>New Event</Header>
                                     <EventForm locations={locations} events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
                                 </Segment>
-                                <Segment>
+                            </div>
+                            <div className="ui padded segment">
+                                <Segment raised>
+                                    <Header as='h3'>New Location</Header>
                                     <LocationForm locations={locations} locationDetails={addLocationDetails} setLocations={setLocations}/>
                                 </Segment>
-                                <Segment>
+                            </div>
+                            <div className="ui padded segment">
+                                <Segment raised>
+                                    <Header as='h3'>New Character</Header>
                                     <PersonForm persons={persons} events={events} personDetails={addPersonDetails} />
                                 </Segment>
+                            </div>
                                 
                             </Segment.Group>
+
                             <Segment>
                                 <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
                             </Segment>
