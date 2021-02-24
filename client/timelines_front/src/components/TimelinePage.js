@@ -24,7 +24,7 @@ const TimelinePage = ({events}) => {
                         // icon={isBattleIcon ? <BattleIcon/> :<non-battleIcon/>}
                     >
                         <h3 className="vertical-timeline-element-title">{event.name}</h3>
-                        {/* <h5 className="vertical-timeline-element-subtitle">{event.location}</h5> */}
+                        <h5 className="vertical-timeline-element-subtitle">{event.location.name}</h5>
                         <p id="description">{event.description}</p>
                         <button>People</button> 
                         {/* this should have a popup for a list of people at the event */}
