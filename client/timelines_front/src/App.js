@@ -2,7 +2,7 @@
 import './App.css';
 import MapComponent from './components/MapComponent';
 import TimelineContainer from './containers/TimelineContainer';
-import EventContainer from './components/EventContainer';
+import EventContainer from './containers/EventContainer';
 import './semantic/dist/semantic.css';
 import PokedexHeader from "./components/PokedexHeader";
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState} from "react";
-import EventList from "./Event/EventList";
-import FilterSearch from "./FilterSearch";
+import EventList from "../components/Event/EventList";
+import FilterSearch from "../components/FilterSearch";
 
 const EventContainer = () => {
 
