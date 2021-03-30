@@ -70,7 +70,7 @@ const [personEvents, setPersonEvents] = useState([]);
           <Input size='small' name="newPerson" type="text"  value={nationality} onChange={handleNationalityChange} />
         </label>
 
-        <label>
+        <label><br/>
           BirthDate:
           <Input size='small' name="newPerson" type="text"  value={birthDate} onChange={handleBirthDateChange} />
         </label>

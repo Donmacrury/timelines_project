@@ -54,25 +54,6 @@ public class DataLoader implements ApplicationRunner {
         Event councilAtDerby = new Event("Council at Derby", "1745-12-04", derby, "A Council of the Jacobite highcomand met and decided to retreat to Scotland");
         eventRepository.save(councilAtDerby);
 
-        event.addPerson(cumberland);
-        event.addPerson(wolfe);
-        event.addPerson(murray);
-        event.addPerson(charlyBoi);
-        eventRepository.save(event);
-
-        battlePrestonpans.addPerson(charlyBoi);
-        battlePrestonpans.addPerson(murray);
-        eventRepository.save(battlePrestonpans);
-
-        battleFalkirkMuir.addPerson(wolfe);
-        battleFalkirkMuir.addPerson(charlyBoi);
-        battleFalkirkMuir.addPerson(murray);
-        eventRepository.save(battleFalkirkMuir);
-
-        councilAtDerby.addPerson(charlyBoi);
-        councilAtDerby.addPerson(murray);
-        eventRepository.save(councilAtDerby);
-
         charlyBoi.addEvents(councilAtDerby);
         charlyBoi.addEvents(battlePrestonpans);
         charlyBoi.addEvents(battleFalkirkMuir);

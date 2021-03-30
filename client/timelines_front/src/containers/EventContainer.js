@@ -1,6 +1,7 @@
 import React, { useEffect, useState} from "react";
-import EventList from "../components/Event/EventList";
-import FilterSearch from "../components/FilterSearch";
+import EventList from "./Event/EventList";
+import FilterSearch from "./FilterSearch";
+import {Container, Header, Grid, Segment} from 'semantic-ui-react';
 
 const EventContainer = () => {
 
@@ -42,11 +43,19 @@ const EventContainer = () => {
     
 return (
     <>
-        
-        <FilterSearch onUserInput={handleUserFilter}/>
+    
         <br/>
-        <br/>
-        <EventList filteredEvents = {eventFilter} deleteEntry={deleteEventEntry}/> 
+        <Container >
+            <Header as='h2' content='Events' textAlign='left'/>
+            <FilterSearch onUserInput={handleUserFilter}/>
+                <Grid container columns={1} >
+                    <Grid.Column>
+                        {/* <Segment> */}
+                            <EventList filteredEvents = {eventFilter} deleteEntry={deleteEventEntry}/> 
+                        {/* </Segment> */}
+                    </Grid.Column>
+                </Grid> 
+        </Container>
     
     </>
 )

@@ -48,7 +48,7 @@ const handleDescriptionChange = (e) => {
         <label>
           Latitude:
           <Input size='small' name="latitude" type="text"  value={latitude} onChange={handleLatitudeChange} />
-        </label>
+        </label><br/>
         <label>
             Logitude:
             <Input size='small' name="longitude" type="text" value={longitude} onChange={handleLongitudeChange}/>
