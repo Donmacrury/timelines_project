@@ -1,4 +1,4 @@
-// import { Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 const Event = ({event, viewEventDetails}) => {
 

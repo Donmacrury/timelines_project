@@ -4,11 +4,13 @@ import TimelinePage from "../components/TimelinePage";
 import MapComponent from "../components/MapComponent";
 import {useEffect, useState} from "react";
 import "./TimeLineContainer.css";
-import EventContainer from "./EventContainer";
+import EventContainer from "../components/EventContainer";
 import EventForm from "../components/EventForm";
 import LocationForm from "../components/LocationForm";
 import PersonForm from "../components/PersonForm";
 import { Container, Header, Grid, Segment, Input} from 'semantic-ui-react';
+import FilterSearch from '../components/FilterSearch';
+import EventList from "../components/Event/EventList";
 
 
 const TimelineContainer = () => {
@@ -17,6 +19,8 @@ const [events, setEvents] = useState([]);
 const [persons, setPersons] = useState([]);
 const [locations, setLocations] = useState([]);
 const [eventDetails, setEventDetails] = useState(null);
+const [eventFilter, setEventFilter] = useState([])
+
 
 const fetchEvents = () => {
     const eventURL = `http://localhost:8080/events`;
@@ -24,6 +28,7 @@ const fetchEvents = () => {
     .then((res) => res.json())
     .then((data) => {
       setEvents(data)  
+      setEventFilter(data)
     })
 }
 
@@ -48,13 +53,13 @@ const fetchLocations = () => {
     })
 }
 
- const getEventDetails = (idToView)=>{
+const getEventDetails = (idToView)=>{
 
      return fetch(`http://localhost:8080/events/${idToView}`)
     .then(res => res.json())
 }
 
- const viewEventDetails = idToView => {
+const viewEventDetails = idToView => {
     
     getEventDetails(idToView)
     .then((data) => {
@@ -115,6 +120,30 @@ const addLocationDetails = (data)=>{
 
 };
 
+const deleteEventEntry = (Id) => {
+    return fetch(`http://localhost:8080/events/${Id}`, {
+        method: "DELETE"
+    })
+}
+
+const handleDelete = Id => {
+    deleteEventEntry(Id);
+
+    // delete from event list
+    setEventFilter(eventFilter.filter(e => e.id !== Id));
+    // delete from map 
+    setEvents(events.filter(event => event.id !== Id));
+    
+}
+
+const handleUserFilter = (userInput) => {
+    const timelineDetails = events.filter((event)=>{
+        return event.name.toUpperCase().includes(userInput.toUpperCase())
+    })
+    setEventFilter(timelineDetails); 
+    }
+
+
 useEffect(()=>{
     fetchEvents();
     fetchPersons();
@@ -132,7 +161,6 @@ return (
 
         <div id="mainComponentCont">
             <Container style={{ padding: '3rem 0rem' }}>
-            {/* <Segment> */}
                 <Container text>
                 <Segment.Group>
                     <Segment raised>
@@ -143,48 +171,39 @@ return (
                             
                         <Grid.Row columns={3}>
                             <Grid.Column>
-                                    {/* <Segment.Group horizontal raised> */}
-                                    {/* <div className="ui padded segment"> */}
-                                        {/* <Segment raised textAlign='left' floated='left'> */}
-                                            <Header as='h3'>New Location</Header>
-                                            <LocationForm locations={locations} locationDetails={addLocationDetails} setLocations={setLocations}/>
-                                        {/* </Segment> */}
-                                    {/* </div> */}
+                                        <Header as='h3'>New Location</Header>
+                                        <LocationForm locations={locations} locationDetails={addLocationDetails} setLocations={setLocations}/>                             
                             </Grid.Column>
-                            <Grid.Column>
-                                {/* <div className="ui padded segment"> */}
-                                    {/* <Segment raised textAlign='left' floated='left'> */}
-                                    
+                            <Grid.Column>                   
                                         <Header as='h3'>New Event</Header>
                                         <EventForm locations={locations} events={events} eventDetails={addEventDetails} setEvents={setEvents}/>
-                                    {/* </Segment> */}
-                                {/* </div> */}
                             </Grid.Column>
                             <Grid.Column>
-                                {/* <div className="ui padded segment"> */}
-                                    {/* <Segment raised textAlign='left' floated='left' padded> */}
                                         <Header as='h3'>New Participant</Header>
-                                        <PersonForm persons={persons} events={events} personDetails={addPersonDetails} />
-                                    {/* </Segment> */}
-                                {/* </div> */}
+                                        <PersonForm persons={persons} events={events} personDetails={addPersonDetails} />                     
                             </Grid.Column>
-                        </Grid.Row>
-                            {/* </Segment.Group> */}
+                        </Grid.Row>                      
                         </Grid>
                     </Segment>
                 </Segment.Group>
+                </Container>   
+                </Container>  
+                <Container>
+                                    <Segment>
+                                        <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
+                                    </Segment>
                 </Container>
-            {/* </Segment> */}
-            </Container>
-                    {/* <Segment.Group> */}
-            <Container>
-                                <Segment>
-                                    <MapComponent viewEventDetails={viewEventDetails} events={events} locations={locations} persons={persons} eventDetails={eventDetails} newEvent={addEventDetails}/>
-                                </Segment>
-            </Container>
-                    {/* </Segment.Group> */}
-
-                        {/* </Grid.Column> */}
+                <Container >
+                                    <Header as='h2' content='Events' textAlign='left'/>
+                                    <FilterSearch onUserInput={handleUserFilter}/>
+                        <Grid container columns={1} >
+                            <Grid.Column>
+                        
+                                    <EventList filteredEvents={eventFilter} deleteEntry={handleDelete} /> 
+                            </Grid.Column>
+                        </Grid> 
+                </Container>
+                    
 
         </div>
     </>
