@@ -13,10 +13,9 @@ function App() {
     <>
    
     <div className="pageContainer">
-    <PokedexHeader name={"Don, Fras and Al!"}/>
+    <PokedexHeader name={"Visualise the Past"}/>
     <TimelineContainer/>
     
-    <EventContainer />
     </div>
     </>
   );

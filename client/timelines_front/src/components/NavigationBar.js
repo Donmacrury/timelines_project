@@ -14,9 +14,9 @@ const NavBar = () => {
             <li>
                 <Link className='navbar-link' to='/timeline'>Timeline</Link>
             </li>
-            <li>
+            {/* <li>
                 <Link className='navbar-link' to='/ww1map'>World War One Map</Link>
-            </li>
+            </li> */}
         </nav>
     )
 }

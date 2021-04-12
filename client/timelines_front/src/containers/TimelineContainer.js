@@ -4,7 +4,6 @@ import TimelinePage from "../components/TimelinePage";
 import MapComponent from "../components/MapComponent";
 import {useEffect, useState} from "react";
 import "./TimeLineContainer.css";
-import EventContainer from "../components/EventContainer";
 import EventForm from "../components/EventForm";
 import LocationForm from "../components/LocationForm";
 import PersonForm from "../components/PersonForm";
