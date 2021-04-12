@@ -57,6 +57,8 @@ const handleDescriptionChange = (e) => {
             Description:
             <Input size='small' name="description" type="text" value={description} onChange={handleDescriptionChange}/>
         </label>
+        
+
         <Input size='small' type="submit" value="Submit" />
       </form>
     )

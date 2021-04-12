@@ -9,6 +9,7 @@ const [birthDate, setBirthDate] = useState("");
 const [deathDate, setDeathDate] = useState("");
 const [personEvents, setPersonEvents] = useState([]);
 
+
     const handlePersonSubmit = (e) => {
         // e.preventDefault();
        

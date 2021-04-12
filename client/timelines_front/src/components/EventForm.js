@@ -52,6 +52,9 @@ const [description, setDescription] = useState("");
     //   }
     // });
 
+    
+    // semantic UI select/dropdown feature
+
     const DropdownSelection = () => (
       <Select
         placeholder='Select Location'
@@ -89,7 +92,6 @@ const [description, setDescription] = useState("");
         <label>
           Location:
           {DropdownSelection()}
-          {/* <select onChange={handleLocationSelect}  >{locationNodes}</select> */}
         </label>
 
         <Input type="submit" value="Submit" />
