@@ -1,8 +1,8 @@
 import {useState, useEffect} from "react";
 import LocationForm from "./LocationForm";
-import { Input } from 'semantic-ui-react';
+import { Form, Input, Select, Dropdown, Menu } from 'semantic-ui-react';
 
-const EventForm = ({events, eventDetails, locations}) =>{
+const EventForm = ({events, setEvents, eventDetails, locations}) =>{
 
 const [name, setName] = useState("");
 const [date, setDate] = useState("");
@@ -19,6 +19,7 @@ const [description, setDescription] = useState("");
       location: {id: location}
     }
       eventDetails(eventObject)
+       
        console.log(eventObject);
   }
 
@@ -32,43 +33,65 @@ const [description, setDescription] = useState("");
       setDate(e.target.value)
     }
     
-    const handleLocationSelect = (e) => {
-      setLocation(e.target.value)
+    const handleLocationSelect = (e, {value}) => {
+      setLocation(value)
     }
 
     const handleDescriptionChange = (e) => {
       setDescription(e.target.value)
     }
 
-    const locationNodes = locations.map((location) => {
-      if (location) {
-        return (
-        <option value={location.id}>
-          {location.name}
-        </option>
-        )
-      }
-    });
+    // const locationNodes = locations.map((location) => {
+    //   if (location) {
+    //     return(
+    //       <option
+    //         value={location.id}>
+    //         {location.name}
+    //       </option>
+    //      )
+    //   }
+    // });
+
+    const DropdownSelection = () => (
+      <Select
+        placeholder='Select Location'
+        fluid
+        selection       
+        onChange={handleLocationSelect}  
+        options={locations.map((location) => {
+            return{
+              name: location.id,
+              key: location.name,
+              text: location.name,
+              value: location.id,
+            }                  
+        })}/>
+    )
 
     return (
-        <form onSubmit={handleEventSubmit}>
+      <form onSubmit={handleEventSubmit}>
+
         <label>
           Name:
-          <Input size='small' name="newEvent" type="text" value={name} onChange={handleNameChange} />
+          <Input size='small' name="name" type="text" value={name} onChange={handleNameChange}/>
         </label>
-        <label>
-          Date:
-          <Input size='small' name="newEvent" type="text"  value={date} onChange={handleDateChange} />
-        </label><br/>
+
+        <label><br/>
+          Date:<br/>
+          <Input size='small' name="date" type="text" value={date} onChange={handleDateChange} />
+        </label>
+
         <label>
           Description:
-          <Input size='small' name="newEvent" type="text"  value={description} onChange={handleDescriptionChange}/>
+          <Input size='small' name="description" type="text"  value={description} onChange={handleDescriptionChange}/>
         </label>
+
         <label>
-          Location: 
-          <select onChange={handleLocationSelect}>
-          {locationNodes}</select>
+          Location:
+          {DropdownSelection()}
+          {/* <select onChange={handleLocationSelect}  >{locationNodes}</select> */}
         </label>
+
         <Input type="submit" value="Submit" />
       </form>
     )
