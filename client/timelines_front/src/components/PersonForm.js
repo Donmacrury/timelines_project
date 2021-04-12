@@ -53,6 +53,7 @@ const [personEvents, setPersonEvents] = useState([]);
     //   }
     // })
 
+    // had to change the format of the event handler for semantic ui, but still works the same way
     const handleEventsChange = (e, {value}) => {
         setPersonEvents(value)
         

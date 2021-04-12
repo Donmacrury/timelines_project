@@ -2,7 +2,7 @@ import {useState, useEffect} from "react";
 import LocationForm from "./LocationForm";
 import { Form, Input, Select, Dropdown, Menu } from 'semantic-ui-react';
 
-const EventForm = ({events, setEvents, eventDetails, locations}) =>{
+const EventForm = ({eventDetails, locations}) =>{
 
 const [name, setName] = useState("");
 const [date, setDate] = useState("");
@@ -33,6 +33,7 @@ const [description, setDescription] = useState("");
       setDate(e.target.value)
     }
     
+    // had to change the format of the event handler for semantic ui, but still works the same way
     const handleLocationSelect = (e, {value}) => {
       setLocation(value)
     }
@@ -53,7 +54,7 @@ const [description, setDescription] = useState("");
     // });
 
     
-    // semantic UI select/dropdown feature
+    // semantic UI select/dropdown feature: function rendered in form below
 
     const DropdownSelection = () => (
       <Select
