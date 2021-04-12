@@ -19,6 +19,10 @@
 
 }
 
+.navbar li {
+  font-size: large;
+}
+
 .pageContainer {
   width: 100%;
   background-color:ghostwhite;
